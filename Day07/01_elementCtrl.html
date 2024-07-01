@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 요소제어</title>
+
+    <!-- 내부 스크립트 작성 영역 -->
+    <script>
+        function cal(){
+            // in1, in2 아이디를 가진 input요소에 입력된 숫자를 전달받기..위해 요소를 참조하기
+            var in1= document.getElementById('in1')
+            var in2= document.getElementById('in2')
+
+            // input요소의 값을 가진 속성(value)으로부터 입력된 값을 받기
+            var a= in1.value
+            var b= in2.value
+
+            var c= a + b
+            c= parseInt(a) + parseInt(b)
+
+            // id가 result인 input요소에 값을 설정하기
+            var result= document.getElementById('result')
+            result.value= c
+        }
+
+        function changeColor(){
+            var e= document.getElementById('aa')
+
+            e.style.color='red'
+            e.style.backgroundColor= 'yellow'
+            e.style.border='2px solid blue'
+        }
+    </script>
+
+    <!-- 외부 스크립트 연결 -->
+    <script src="./01_ex.js"></script>
+
+</head>
+<body>
+    
+    <input type="text" id="in1"><br>
+    <input type="text" id="in2"><br>
+    <input type="button" value="계산" onclick="cal()"><br>
+    <input type="text" size="30" id="result" readonly>
+
+    <hr>
+
+    <!-- HTML의 특정 스타일 변경 -->
+    <h2 id="aa">This is Heading element</h2>
+    <button onclick="changeColor()">change backgrond color of h2</button>
+
+    <hr>
+
+    <!-- 이미지 변경 -->
+    <img src="./image/newyork.jpg" alt="newyork" width="30%">
+    <button onclick="changeImage()">change image</button>
+
+    <hr>
+    <!-- HTML요소와 JS를 혼용하여 사용할 수도 있음  -->
+    <table border="1" style="text-align: center;">
+
+        <tr>
+            <td>number</td>
+        </tr>
+
+        <script>
+            for(var i=0; i<10; i++){
+                //document.write('<tr><td>' + i + '</td></tr>')
+                // 문자열 탬플릿 이라는 문법이 생김. [''문자열 따옴표안에서 변수를 구별할 수 있는 문법]
+                document.write(`<tr><td> ${i} </td></tr>`) // ``빽틱기호. 따옴표 아님!!
+            }
+        </script>
+
+    </table>
+
+
+</body>
+</html>

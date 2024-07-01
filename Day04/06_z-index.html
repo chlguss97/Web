@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>z-index style</title>
+
+        <style>
+
+            div{
+                width: 100px; height: 100px;
+                position: absolute;
+            }
+
+            #b1{
+                background-color: blue;
+                top: 0px; left: 0px; 
+                z-index: 1;
+            }
+
+            #b2{
+                background-color: yellow;
+                top: 30px; left: 30px; 
+            }
+
+            #b3{
+                background-color: green;
+                top: 60px; left: 60px; 
+                z-index: -1;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        
+        <div id="b1">box #1</div>
+        <div id="b2">box #2</div>
+        <div id="b3">box #3</div>
+
+    </body>
+</html>

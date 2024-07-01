@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>텍스트 스타일</title>
+        <meta charset="utf-8">
+
+        <!-- 내부 스타일 시트 -->
+        <style>
+            /* 이 영역안에서는 CSS문법체계를 따름 */
+
+            p{font-family: "Blippo Blk BT",sans-serif;}
+            p{font-family: "휴먼명조", serif;}
+            p{font-family: monospace;}
+
+            /* 사용자의 디바이스에 설치된 글꼴에 따라 적용이 안될 수도 있음 */
+            /* 그래서 웹폰트 사용을 권장 */
+
+            /* 폰트 글꼴명 만들기 (이를 웹폰트라고 부름)*/
+            @font-face {
+                font-family: "My Font";
+                src: url("./font/billabong.otf");
+            }
+
+            p{font-family: "My Font", serif;}
+
+            p{font-size: small;}
+            p{font-size: 20px;}
+            p{font-size: 100%;}
+            p{font-size: 150%;}
+            p{font-size: 1em;}
+            p{font-size: 1.5em;}
+            p{font-size: 2em;}
+            p{font-size: 1rem;} /*rem : 최상위 root요소의 글꼴 사이즈 비율로 크기 지정 (권장)*/ 
+
+            /* bold, normal */
+            p{font-weight: bold;}
+
+            /* italic, normal */
+            p{font-style: italic;}
+
+            /* font관련 속성들의 축약형 속성 : 순서 [weight/stye] size family*/
+            p{font: bold italic 2rem "휴먼옛체",serif}
+
+
+            /* 텍스에 관련된 속성들 */
+            /* 텍스트 정렬 (수평정렬) */
+            p{text-align: right;}
+            p{text-align: center;}
+            p{text-align: justify;}
+
+            /* 텍스트 꾸미기(선긋기) */
+            p{text-decoration: underline;}
+            p{text-decoration: overline;}
+            p{text-decoration: line-through;}
+            p{text-decoration: none;}
+
+            /* 텍스트 변환 */
+            p{text-transform: uppercase;}
+            p{text-transform: lowercase;}
+            p{text-transform: capitalize;}
+
+            /* 텍스트 그림자 */
+            p{text-shadow: 5px 3px 5px red;}
+
+            /* 워드 랩 */
+            p.aaa{
+                width: 15rem;
+                border: 1px solid blue;
+
+                word-wrap: break-word;
+            }
+
+            /* 다중 컬룸(칸) */
+            #column{
+                column-count: 2;
+                column-gap: 80px;
+                column-rule: 4px dotted green;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        
+        <p>Hello world</p>
+        <p>한글은 어떠한가</p>
+
+        <p class="aaa">
+            한글은 전혀 문제 없이 자동으로 워드랩 됨.
+            asldfja aslkdjfalksjdf aslkdfjalskdjfasdfj al;sdas dklfajsaslk;dfj ;a
+        </p>
+
+        <p id="column">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla veritatis nostrum, enim voluptates incidunt est, quia aliquam sunt beatae, ipsam laborum repellat commodi porro quod ut nihil excepturi placeat consequuntur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, culpa voluptatibus. Illum nobis est, debitis libero cupiditate maxime reprehenderit rerum ratione aliquid architecto ea dicta assumenda deserunt adipisci ab nesciunt?
+        </p>
+
+        <!-- text-align 은 블럭요소에서만 의미 있음. -->
+        <div style="text-align: center; border: 1px dotted red;">Hello</div>
+        <span style="text-align: center; border: 1px dotted red;">Hello</span>
+
+        <div style="text-align: center;"><img src="../Day02/image/submit.png" alt="서밋버튼이미지"></div>
+
+    </body>
+</html>

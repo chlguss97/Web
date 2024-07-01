@@ -1,0 +1,82 @@
+/* 공통 스타일 적용 */
+@import url('./common.css');
+
+/* 글 작성 영역 */
+.board_write_wrap{
+    width: 100%;
+    border-top: 2px solid black;
+}
+
+/* 제목,글쓴이 작성  영역 */
+.board_write_wrap .title, .info{
+    padding: 1.5rem;
+}
+
+/* 제목 줄 */
+.board_write_wrap .title{
+    display: flex;
+    flex-direction: row;
+
+    border-bottom: 1px dashed #ddd;
+}
+
+.board_write_wrap .col_label{
+    width: 10rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.board_write_wrap .col_input{
+    flex-grow: 1;
+}
+
+.board_write_wrap .col_input input{
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.board_write_wrap .info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-bottom: 1px solid black;
+}
+
+.board_write_wrap .info .writer{
+    width: 50%;
+    display: flex;
+}
+
+.board_write_wrap .info .password{
+    width: 30%;
+    display: flex;
+}
+
+.board_write_wrap .content{
+    border-bottom: 1px solid black;
+}
+
+.board_write_wrap textarea{
+    width: 100%;
+    height: 30rem;
+    border: 0;
+    resize: none;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.btn_wrap input{
+    width: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+

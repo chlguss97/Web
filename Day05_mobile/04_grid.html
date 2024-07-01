@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+</head>
+<body>
+
+    <div class="container">
+        <div id="item1">1</div>
+        <div id="item2">2</div>
+        <div id="item3">3</div>
+        <div id="item4">4</div>
+        <div id="item5">5</div>
+        <div id="item6">6</div>
+        <div id="item7">7</div>
+        <div id="item8">8</div>
+        <div id="item9">9</div>
+    </div>
+
+    <style>
+
+        /* CSS Grid (격자배치 CSS) : table 요소보다 편하게 요소를 격자모양으로 배치해주는 CSS문법 */
+        .container{
+            display: grid;  /*자식요소들을 격자로 배치하겠다!!*/
+
+            /* 자식요소들을 한줄에 3칸씩 배치해보기 */
+            grid-template-columns: 100px 100px 100px;
+            grid-template-columns: auto auto auto;
+
+            grid-template-rows: 150px 200px;            
+        }
+
+        .container div{
+            background-color: aqua;
+            margin: 4px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        #item1{
+            /* 칸 병합 */
+            grid-column-start: 1;
+            grid-column-end: 3;
+            /* 1~2칸 */
+        }
+
+        #item3{
+            grid-column-start: 2;
+            grid-column-end: 4;
+            /* 2~3칸 */
+        }
+
+        #item5{
+            grid-column: 3 / span 2;
+        }
+
+        #item6{
+            grid-row-start: 3 ;
+            grid-row-end: 5 ;
+            /* 3~4번 줄까지.. */
+        }
+
+
+
+    </style>
+    
+</body>
+</html>

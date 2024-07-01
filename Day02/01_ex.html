@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>연습</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <!-- 오디오 -->
+        <audio src="./audio/old_pop.mp3" controls="controls"></audio>
+
+        <!-- 브라우저마다 지원하는 음원의 형식(파일확장자)가 제한적임..그래서 여러 음원형식으로 준비해 놓기 -->
+        <!-- 속성명과 속성값이 같다면 속성명만 기입해도 적용됨 -->
+        <audio controls>
+            <source src="./audio/old_pop.mp3" type="audio/mp3">
+            <source src="./audio/old_pop.wav" type="audio/wav">
+            브라우저에서 audio 요소를 지원하지 않습니다
+        </audio>
+
+        <hr>
+
+        <!-- 비디오 -->
+        <video width="640" height="480" controls>
+            <source src="./video/trailer.webm" type="video/webm">
+            <source src="./video/movie.ogv" type="video/ogv">            
+        </video>
+
+        <hr>
+        <hr>
+
+        <!-- iframe [인라인 프레임] -->
+        <iframe src="../Day01/02_text.html" frameborder="1"></iframe>
+        <iframe src="http://mrhi2024.dothome.co.kr/index.html" frameborder="0"></iframe>
+        <iframe src="http://mrhi.or.kr" frameborder="0" width="300" height="500"></iframe>
+        <iframe src="htts://www.naver.com" frameborder="1"></iframe>
+
+        <!-- 하이퍼 링크 <a> 에 의해 열리는 웹문서를 iframe 안에 보이도록..할 수 있음 -->
+        <iframe src="" frameborder="1" name="aa"></iframe>
+        <a href="https://www.dothome.co.kr" target="aa">월드와이드웹 공식 사이트</a>
+
+        <hr>
+
+        <!-- 영역을 그룹화하는 div요소 -->
+        <div style="background-color: yellow; border: 2px solid red; padding-left: 10px;">
+            <h2>title</h2>
+            <p>this is message.</p>
+        </div>
+
+        <!-- 영역 그룹화 블럭요소 div -->
+        <p>
+            안녕하세요. 나는 <div style="color: blue;">홍길동</div> 입니다.
+        </p>
+
+        <!-- 영역 그룹화 인라인요소 span -->
+        <p>
+            안녕하세요. 나는 <span style="color: blue;">홍길동</span> 입니다.
+        </p>
+
+
+        
+    </body>
+</html>

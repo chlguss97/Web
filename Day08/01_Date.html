@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data 생성자함수</title>
+
+    <script>
+
+        //1. Date
+        var a= new Date()
+        document.write( typeof(a) +"<br>" )
+
+        // 주요 기능메소드들
+        document.write( a.toDateString() + "<br>" )
+        document.write( a.toLocaleString() + "<br>" )
+        document.write( a.toString() + "<br>" )
+        document.write( a.getYear() + "<br>" )
+        document.write( a.getFullYear() + "<br>" )
+        document.write( a.getMonth() + "<br>" ) // 0~11
+        document.write( a.getDate() + "<br>" )
+        document.write( a.getDay() + "<br>" ) // 한주의 날짜번째..
+        document.write( a.getHours() + "<br>" ) //0~23
+        document.write( a.getYear() + "<br>" )
+        document.write( a.getMinutes() + "<br>" )
+        document.write( a.getSeconds() + "<br>" )
+        document.write( a.getTime() + "<br>" ) // 1970/1/1 09:00
+
+        // set도 가능함
+        var b= new Date()
+        document.write(b.toLocaleString()+"<br>")
+        b.setFullYear(2020)
+        document.write(b.toLocaleString()+"<br>")
+
+        // 객체를 생성하면서 날짜를 지정할 수도 있음.- 생성자 함수의 파라이터에 원하는 날짜를 지정
+        var c= new Date(2025, 4, 2) // 2025년 5월 2일
+        document.write(c.toLocaleString()+"<br>")
+
+        c= new Date("2025. 5. 2") // 2025년 5월 2일
+        document.write(c.toLocaleString()+"<br>")
+
+        c= new Date("Thu May 2 2025 13:40:21 GMT+0900")
+        document.write(c.toLocaleString()+"<br>")
+
+        c= new Date(0)
+        document.write(c.toLocaleString()+"<br>")
+
+        c= new Date(1000*60*60*24*365*10)
+        document.write(c.toLocaleString()+"<br>")
+
+        // 두 날짜사이의 비교
+        var a= new Date("2023. 12. 21")
+        var b= new Date()
+
+        var diff= b.getTime() - a.getTime()
+        document.write("두 날짜 사이의 차이 : " +  diff +"<br>")
+
+        // 밀리세컨드를 날짜로 변환
+        var sec= diff / 1000  //ms->s
+        var min= sec / 60     //s ->m
+        var hour= min / 60    //m ->h
+        var day= hour / 24    //h ->d
+
+        document.write('두 날짜 사이의 일수 차이 : ' + day +"<br>" )
+
+        //소수점 버리기.. 수학적인 기능 Math객체 이용
+        day= Math.floor(day)
+        document.write('두 날짜 사이의 일수 차이 : ' + day +"<br>" )
+
+    </script>
+
+</head>
+<body> 
+    
+    <hr>
+    <input type="date" id="in1">
+    <button onclick="clickBtn()">기준일 입력완료</button>
+
+    <script>
+
+        function clickBtn(){
+            var e= document.getElementById('in1')
+            var a= e.value // input요소의 입력값을 가진 속성 value
+            //alert(a)
+            var x= new Date(a) //기준일 날짜객체
+            var y= new Date()  //현재 날짜객체
+            
+            var diff= y - x  //Date객체의 - 연산을 요청하면 자동 .getTime() 으로 계산함
+            var day= diff / (1000*60*60*24)
+            day= Math.floor(day)
+
+            document.write(day +"<br>")
+        }
+
+    </script>
+
+    <hr>
+
+    <h4>디지털 시계</h4>
+    <button onclick="showClock()">show clock</button>
+    <input type="text" id="in2" readonly size="30">
+
+    <script>
+
+        function showClock(){
+            var s= new Date()
+
+            var e= document.getElementById('in2')
+            e.value= s.toLocaleString()
+
+            // 행운의 편지
+            setTimeout( showClock ,1000)
+        }
+
+    </script>
+
+    
+</body>
+</html>

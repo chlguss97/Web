@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        //JS객체안에 있는 메소드는 객체마다 존재함..Java나 kotlin과 다름.. 이거 낭비
+        //그래서 메소드를 별도로 만들어놓고 같은 객체끼리 공유하는 방식을 구현하는 문법 : prototype
+        function Person(name, age){
+            this.name= name
+            this.age= age            
+        }
+
+        // Person클래스(생성자 함수)에 하나만 존재하는 메소드 추가하기 (자바는 원래 이런 방식..)
+        Person.prototype.show= function(){
+            document.write("Person : " + this.name + " : " + this.age +"<br>")
+        }
+
+        var p1= new Person("sam", 20)
+        var p2= new Person("robin", 25)
+
+        // Person 객체들의 공용공간.. prototype 안에 있는 show()메소드 호출
+        p1.show()
+        p2.show()
+
+        Person.prototype.getName= function(){
+            return this.name
+        }
+
+        document.write( p1.getName() +"<hr>")
+
+        //변수도 prototype에 넣어서 공유 가능
+        Person.prototype.address="seoul"
+
+        document.write(p1.address +"<br>")
+        document.write(p2.address +"<br>")
+
+        // address 값 변경  -- prototype 안에 변수값 변경은 객체참조변수로 할 수 없음.
+        // p1.address= "busan"
+        // document.write(p1.address +"<br>")
+        // document.write(p2.address +"<br>")
+
+        // prototype 의 변수를 변경하는 문법
+        Person.prototype.address="incheon"
+        document.write(p1.address +"<br>")
+        document.write(p2.address +"<br>")
+
+
+
+    </script>
+    
+</body>
+</html>

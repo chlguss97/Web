@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript 기초문법#1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+        <!-- 내부 스크립트 작성 -->
+        <script>
+            // 이 영역안에서는 JavaScript 문법체계를 따름
+
+            // 1. HTML에서 body영역에 했던 모든 작업은 스크립트로 처리할 수 있음.
+            // 화면에 글씨 출력
+            document.write("Hello world!!")
+
+            // 당연하게 출력명령을 또 하더라도 자동 줄바꿈은 안됨
+            document.write("줄바꿈 되나? 하려면 <br>태그 사용")
+
+            // 출력문자열을 브라우저가 보여주는 만큼.. HTML태그문을 인식함.
+            document.write("<hr>")
+            document.write("<a href=''>이런식으로..HTML요소를 만들 수 있음.</a>")
+            document.write('<a href="">이런식으로..HTML요소를 만들 수 있음.</a>')
+
+            document.write('<hr>')
+
+            // JS는 프로그래밍 언어임. 그렇기에 변수도 가능함..
+            var a= 10
+            document.write(a)
+
+            var b= 'sam'
+            document.write(b)
+
+            var c= new Date()
+            document.write(c) //자동 .toString()
+            document.write('<br>')
+            for(var i=0; i<10; i++){
+                document.write(i+",") //문자열 결합연산자 + 
+            }
+
+            //버튼 이벤트에 반응하기
+            function aaa(){
+                var p1= document.getElementById('p1')
+                p1.innerHTML= "<h2>Nice to meet you</h2>" 
+                p1.innerText= "<h2>Nice to meet you</h2>"                
+            }
+
+            document.write('<hr>')
+        </script>
+
+    </head>
+    <body>
+
+        Hello world
+
+        <p>
+            <button onclick="aaa()">button</button>
+        </p>
+        <p id="p1"></p>
+        
+    </body>
+</html>

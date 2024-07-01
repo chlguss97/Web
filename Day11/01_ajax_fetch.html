@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX fetch함수</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>글쓰기</legend>
+
+        <form>
+            <input type="text" placeholder="이메일" name="email" id="in1">
+            <input type="text" placeholder="비밀번호" name="password" id="in2">
+
+            <input type="submit" value="GET방식" onclick="aaa()">
+            <input type="submit" value="POST방식" onclick="bbb()">
+            <input type="submit" value="POST BY JSON데이터" onclick="ccc()">
+            <input type="submit" value="GET JSON" onclick="ddd()">
+            <input type="submit" value="GET XML" onclick="eee()">
+        </form>
+    </fieldset>
+
+    <script>
+
+        function eee(){
+            fetch('./movie.xml')
+            .then(function(res){
+                return res.text()
+            }).then(function(text){
+                // xml 글씨를 분석
+                //alert( text )
+
+                //태그문을 가진 문서를 분석하는 객체
+                var parser= new DOMParser()
+                var doc= parser.parseFromString(text, 'application/xml')
+                //리턴 doc : window.document와 같은 기능을 가진 객체
+
+                var title= doc.getElementsByTagName('title')[0].textContent
+                var genre= doc.querySelectorAll('genre')[0].textContent
+                var openDt= doc.querySelectorAll('openDt')[0].textContent 
+
+                alert( title +" : " + genre +" - " + openDt)
+                
+            })
+        }
+
+
+        function ddd(){
+
+            fetch('./student.json')
+            .then(function(res){
+                // 응답결과 json을 분석하여 JS객체로 만들어주세요..
+                return res.json()}
+            ).then(function(obj){
+                alert( obj.name +" : " + obj.age +" - " + obj.major )
+            })
+
+        }
+
+        function ccc(){
+            event.preventDefault()
+
+            var email= document.querySelector('#in1').value
+            var password= document.querySelector('#in2').value
+
+            var obj= {
+                email: email,
+                pw: password
+            }
+
+            var data= JSON.stringify(obj)
+
+            fetch('./ccc.php',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: data
+            }).then(function(res){
+                return res.text()
+            }).then(function(text){
+                alert(text)
+            }).catch(function(error){
+                alert(error)
+            })
+        }
+
+
+        function bbb(){
+            event.preventDefault()
+
+            var email= document.querySelector('#in1').value
+            var password= document.querySelector('#in2').value
+
+            // 서버로 보낼 데이터를 key=value 형태로 만들기
+            var data= `email=${email}&pw=${password}`
+
+            // POST방식으로 데이터 통신하기
+            fetch('./bbb.php',{
+                method:'POST',
+                headers:{'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'},
+                body: data
+            }).then(function(response){
+                return response.text()
+            }).then(function(text){
+                alert(text)
+            })
+        }
+
+
+        function aaa(){           
+
+            //submit() 이벤트의 기본 페이지전환 동작을 막기!!
+            window.event.preventDefault()
+
+            // fetch() 내장함수를 이용하여 AJAX 통신하기 - GET 방식
+
+            // 서버에 보낼 사용자 입력 데이터들 얻어오기 -- CSS선택자를 이용하여 요소참조하는 기능 .querySelector()
+            var email = document.querySelector('#in1').value
+            var password = document.querySelector('#in2').value
+
+            //alert(email +"\n" + password)
+
+            var url= './aaa.php?email=' + email +'&pw=' + password
+
+            fetch(url)
+            .then(function(response){ //response : 응답객체
+                //응답객체에게 데이터를 글씨로 만들어서 리턴해줌
+                return response.text()               
+            }).then(function(text){ // 위에서 만들어준 글씨데이터..
+                alert(text)                                
+            })
+
+
+        }
+
+    </script>
+
+
+    
+</body>
+</html>

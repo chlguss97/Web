@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number 생성자함수</title>
+
+    <script>
+
+        //2. Number  ( number와 다른 자료형... like. wrapper class Integer..)
+
+        // 수치형(number)과 Number는 다름
+        var a= 10
+        var b= new Number(10)
+
+        document.write( typeof(a) +"<br>" )
+        document.write( typeof(b) +"<br>" )
+        document.write( (a==b) +"<br>" )
+        document.write( (a===b) +"<br>" )
+
+        document.write("<hr>")
+
+        // 소수점 Number객체의 주요 기능메소드들
+        var num= 1.23e3
+        document.write(num +"<br>")
+
+        var num= new Number(123.456)
+        document.write( num +"<br>")
+
+        //1) 지수표현식
+        document.write( num.toExponential() + "<br>" )
+        document.write( num.toExponential(2) + "<br>" )
+
+        //2) 소수점 자르기
+        document.write( num.toFixed() +"<br>")
+        document.write( num.toFixed(2) +"<br>") //결과를 string으로 줌
+        document.write( typeof( num.toFixed(2) ) +"<br>")
+
+        //3) 진법 변환 표기 -  결과는 string으로
+        var num= new Number(10)
+        document.write( num.toString() +"<br>")  //10진법
+        document.write( num.toString(16) +"<br>")  //16진법
+        document.write( num.toString(8) +"<br>")  //8진법
+        document.write( num.toString(2) +"<br>")  //2진법
+
+        //4) 수치형은 Number객체로 자동 wrapping 됨.
+        var a= 255
+        document.write( a.toString(16) +"<br>" )
+
+        // 리터럴 수치형 값도 곧바로 Wrapping 될까>
+        document.write( 3.141592.toFixed(2) + '<br>' )
+        //document.write( 10.toString(2)  ) //error
+        document.write( 10.0.toString(2) +"<br>")
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

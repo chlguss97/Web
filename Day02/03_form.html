@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form 연습</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        
+        <!-- form 요소 : anchor 처럼 다른 문서를 실행하지만 데이터를 전달할 수 있고 이동을 위한 별도의 input요소가 필요함 -->
+        
+        <!-- GET 방식 -->
+        <form action="./aaa.php" method="get">
+            <input type="text" name="title">
+            <input type="text" name="msg">
+
+            <input type="submit" value="전송">
+        </form>
+
+        <!-- POST 방식 -->
+        <hr>
+        <form action="./bbb.php" method="post" enctype="application/x-www-form-urlencoded">
+            
+            <fieldset>
+                <legend>input &amp; post test </legend>
+
+                <label>이름: <input type="text" name="name"></label><br>
+                <label>비밀번호: <input type="password" name="pw"></label><br>
+
+                <p>
+                    성별:
+                    <label><input type="radio" name="rg" value="male">남성</label>
+                    <label><input type="radio" name="rg" value="female" checked>여성</label>
+                </p>
+
+                <p>
+                    좋아하는 과일선택(여러개 선택 가능):
+                    <label><input type="checkbox" name="fruits[]" value="apple">사과</label>
+                    <label><input type="checkbox" name="fruits[]" value="banana">바나나</label>
+                    <label><input type="checkbox" name="fruits[]" value="orange">오렌지</label>
+                </p>
+
+                <p>
+                    메세지: <br>
+                    <textarea name="msg" cols="40" rows="5"></textarea>
+                </p>
+
+                <p>
+                    자동차 브랜드 : 
+                    <select name="brand">
+                        <optgroup label="국산 자동차">
+                            <option value="현대">현대</option>
+                            <option value="기아">기아</option>
+                            <option value="KGM">KGM</option>
+                        </optgroup>
+                    </select>
+                </p>
+
+                <hr>
+
+                <div>
+                    <input type="submit" value="완료">
+                    <input type="reset">
+                </div>
+
+            </fieldset>
+
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON parsing</title>
+</head>
+<body>
+
+    <h3 id="hh"></h3>
+    <button onclick="aaa()">json 문자열 분석 : json=>JS객체 </button>
+    <button onclick="bbb()">JS객체를 json문자열로 변환</button>
+
+    <script>
+
+        function aaa(){
+
+            var s= '{"name":"sam", "age":20}'
+
+            //json --> js object
+            var person= JSON.parse(s)
+
+            document.querySelector('#hh').innerHTML= person.name +" : " + person.age
+
+        }
+
+
+        function bbb(){
+
+            var student= {
+                name: 'robin',
+                age: 23,
+                major:'android'
+            }
+
+            // js object --> json string
+            var s= JSON.stringify(student)
+
+            document.querySelector('#hh').innerHTML= s
+        }
+
+    </script>
+
+
+</body>
+</html>

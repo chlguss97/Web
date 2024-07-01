@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>시멘틱태그로 만든 레이아웃 구조</title>
+        <meta charset="utf-8">
+
+        <style>
+
+            /* *{border: 1px dotted red;} */
+
+            body{
+                background-color: #efe5d0;
+                font-family: 'Times New Roman', Times, serif;                
+                margin: 0px;
+            }
+
+            header{
+                background-color: #e3afed;
+                margin: 0px;
+                padding: 2rem;
+            }
+
+            header h1{margin: 0px;}
+
+            nav{
+                background-color: #ffd800;
+                display: table-cell;
+                padding: 1rem;
+
+            }
+
+            article{
+                background-color: yellow;
+                display: table-cell;
+                padding: 1rem;
+            }
+
+            footer{
+                background-color: grey;
+                color: white;
+                text-align: center;
+                padding: 1rem .5rem;
+            }
+
+
+            #root{
+                width: 80%;
+                min-width: 500px;
+                margin: 0 auto;
+            }
+
+
+
+
+
+        </style>
+
+    </head>
+    <body>
+
+        <div id="root">
+
+            <header>
+                <h1>My Blog Page</h1>
+            </header>
+
+            <nav>
+                <h1>Links</h1>
+                <ul>
+                    <li><a href="http://www.naver.com">naver</a></li>
+                    <li><a href="http://www.google.com">google</a></li>
+                    <li><a href="http://www.kakao.com">kakao</a></li>
+                </ul>
+                <figure>
+                    <img src="./image/man.png" alt="man" width="85" height="85">
+                    <figcaption>남자그림</figcaption>
+                </figure>
+            </nav>
+
+            <article>
+                <section>
+                    <h1>Semantic Tags</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit totam illo quam tempore repudiandae ratione earum vel suscipit voluptas ipsam maiores dolorem nobis, autem laboriosam nisi reiciendis optio at! Libero.
+                    </p>
+                </section>
+
+                <section>
+                    <h1>Semantic Tags</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit totam illo quam tempore repudiandae ratione earum vel suscipit voluptas ipsam maiores dolorem nobis, autem laboriosam nisi reiciendis optio at! Libero.
+                    </p>
+                </section>
+            </article>
+            <footer>
+                Copyright &copy; 2024 MRHI
+            </footer>
+        </div>        
+
+
+    </body>
+</html>

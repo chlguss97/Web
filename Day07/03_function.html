@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS function</title>
+
+    <script>
+        // 함수 선언(정의) 및 호출 - 선언적 함수라고 부름
+        function aaa(){
+            document.write("aaa<br>")
+        }
+
+        //함수 호출
+        aaa()
+
+        // 특이한 점. 선언적 함수는 함수정의와 호출의 순서에 영향받지 않음
+        // 웹브라우저가 시작되면 본인 스크립트의 선언적 함수부터 모두 로딩한 후 JS코드가 한줄씩 실행됨
+        bbb()
+
+        function bbb(){
+            document.write("bbb function <br>")
+        }
+
+        //다른 스크립트 영역(문서)의 함수를 호출할 수 있을까?
+        ccc() //에러 발생 - 인식못함
+    </script>
+
+    <script>
+        document.write('<hr>')
+        bbb()
+
+        function ccc(){
+            document.write('ccc function <br>')
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h1>Body Region</h1>
+
+    <script>
+        aaa()
+    </script>
+
+    <hr>
+
+    <!-- 파라미터를 전달받는 함수 만들어보기 -->
+    <script>
+
+        function ddd(a){
+            document.write(a +"<br>")
+        }
+
+        ddd(10)
+        ddd(20)
+        ddd("sam")
+        ddd(new Date())
+        ddd()
+
+        //매개변수가 2개 이상...
+        function eee(a,b){
+            document.write(a+" , ")
+            document.write(b+"<br>")
+
+            if(a==undefined || b==undefined){
+                document.write('에러!! 2개 모두 숫자여야 합니다.<br>')
+                return
+            }
+
+            var c= a+b
+            document.write('결과 : ' + c +"<br>")
+        }
+
+        eee(5,3)
+        eee(5)
+
+        // 같은 함수를 또 정의하면?? -- 덮어쓰기가 됨
+        function eee(a,b){
+            document.write('새로정의한 eee 함수<br>')
+        }
+
+        eee(5,3)
+
+        // 오버로딩은 되나?? -- 함수의 이름이 같으면 무조건 덮어쓰기..
+        function eee(){
+            document.write('오버로딩된 aaa함수....될까?<br>')
+        }
+
+    </script>
+
+    <hr>
+
+    <!-- 리턴을 수행하는 함수 만들기 -->
+    <script>
+
+        function ggg(){
+            // return 10
+            //return "aaa"
+            //return true
+            //return 5+2
+            //return 5>2
+            return new Date()
+        }
+
+        var a= ggg()
+        document.write(a +"<br>")
+
+        // 객체도 리턴할 수 있음.
+        function hhh(){
+            return {name:"sam", age:20}
+        }
+
+        var h= hhh()
+        document.write( h.name +", " + h.age +"<br>" )
+
+        //리턴으로 2개의 값을 동시에 리턴할 수 있나?? -- 마지막 값 1개만 받아짐.
+        function iii(){
+            return 100,200
+        }
+
+        var x,y = iii()
+        document.write(x+"<br>")
+        document.write(y+"<br>")
+    </script>
+
+    <hr>
+
+    <!-- 지역변수 & 전역변수 -->
+    <script>
+
+        var n=5 //함수안에 없기에 일종의 전역변수..
+
+        function mmm(){
+            var m=10  //지역변수            
+            document.write("mmm : " + m +"<br>")
+            n=100
+
+            //권장하지 않는 문법 - 전역변수 만들기
+            s= 1000
+            document.write(s +"<br>")
+        }
+
+        mmm()
+        //document.write("m : " + m +"<br>") //에러..
+        document.write("n : " + n +"<br>") //
+        document.write(s +"<br>")
+
+
+        k=50
+        document.write(k+"<br>")
+        var t=50
+        document.write(t+"<br>")     
+
+    </script>
+
+    <!-- 익명함수 -->
+    <hr>
+
+    <script>
+
+        //show() //에러. [당연. show라는 변수가 아직 없음]
+
+        var show= function(){
+            document.write('익명함수<br>')
+        }
+
+        document.write(show)
+        document.write("<br>")
+        show() //변수이름으로 함수기능을 호출
+        show()
+    </script>
+
+    <hr>
+
+    <!-- 익명함수의 파라미터와 리턴 -->
+    <script>
+
+        var out= function(a,b){
+            return a+b            
+        }
+
+        var sum= out(10, 20)
+        document.write(sum +"<br>")
+
+        // 함수자체를 다른 변수에 대입할 수 있음
+        var a= 10
+        var b= a
+        document.write(a +"<br>")
+        document.write(b +"<br>")
+
+        var aa= function(){
+            document.write("aaa 익명함수....<br>")
+        }
+        var bb= aa
+
+        aa()
+        bb()
+
+        function display(g){
+            document.write(g)
+            document.write('<br>')
+            g()
+        }
+
+        display(function(){ 
+            document.write('Hello')
+        })
+
+        display(function(){
+            document.write('Nice')
+        })
+
+        display(aa)
+
+        //당연히 리턴값에 함수를 전달할 수도 있음.
+        function www(){
+            var ppp=function(){
+                document.write('Good........<br>')
+            }
+            return ppp
+        }
+
+        var p= www()
+        document.write(p+"<br>")
+        p()
+
+        var k=www
+        document.write(k +"<br>")
+        k()()
+
+        www()()//
+    </script>
+
+    <hr>
+
+    <!-- arguments 라는 이름의 배열 파라미터 -->
+    <script>
+
+        function add(){
+            //JS의 함수는 별도의 명시적 선언없이도 이미 arguments 이라는 아주 특별한 지역변수가 존재함
+            //arguments는 파라미터들의 배열의 요소로서 자동으로 받는 특별한 배열변수임
+            document.write( arguments.length +"<br>" )
+
+            var total= 0
+            for(var i=0; i<arguments.length; i++){
+                total= total + arguments[i]
+            }
+
+            document.write("덧셈 결과 : " + total +"<br>")
+
+        }
+
+        add()
+        add(10)        
+        add(10,20)
+        add(10,20,30)
+        add(10,20,30,40)
+
+    </script>
+
+
+     
+</body>
+</html>

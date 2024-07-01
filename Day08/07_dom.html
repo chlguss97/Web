@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 학습</title>
+</head>
+<body>
+
+    <!-- DOM (Document Object Model) - html의 구성물들을 객체화 하여 해석하고 제어하는 기법 -->
+    <!-- html 요소들의 계층 구조를 도식화한 것을 DOM tree 라고 부름 -->
+    <!-- DOM 트리의 가지에 있는 [요소,속성,글씨] 하나하나를 node 라고 부름 -->
+    <!-- node 종류 : element node, attribute node, text node -->
+    <!-- 노드간의 관계 : parent node, child node, sibling node [이 관계를 이용하여 요소 제어 가능] -->
+
+    <!-- node의 종류를 확인해보기 -->
+    <p id="p1"><a href="" target="">NAVER</a></p>
+
+    <script>
+
+        // id=p1 요소
+        var e= document.getElementById('p1')
+        //alert( e.nodeType +" , " + e.nodeName )  //1: element node
+
+        // p요소의 속성
+        var attrs= e.attributes
+        //alert( attrs[0].nodeType +" , " + attrs[0].nodeName  )  //2: attribute node
+        //alert("속성값 : " + attrs[0].value )
+
+        // p요소의 첫번째 자식 노드 : a요소
+        var e= e.firstChild
+        //alert(e.nodeType +" , " + e.nodeName) // 1, A
+
+        // a요소의 속성
+        var attrs= e.attributes
+        //alert( attrs[0].nodeType +" : " + attrs[0].nodeName )
+        //alert( attrs[1].nodeType +" : " + attrs[1].nodeName )
+
+        // a요소의 첫번째 자식노드 : 텍스트
+        var t= e.firstChild
+        //alert(t.nodeType + " , " + t.nodeName)
+        //alert("텍스트의 값 : " + t.data)
+
+    </script>
+
+    <hr>
+
+    <!-- [실습 #1] DOM 노드의 동적인 생성 및 삭제 기능 구현 -->
+    <button onclick="aaa()">add Text node</button>
+    <button onclick="bbb()">add element node</button>
+    <button onclick="ccc()">remove child</button>
+    <p class="pp"></p>
+
+    <script>
+        function aaa(){
+            //텍스트노드 만들기
+            //var node= document.createTextNode('this is text')
+            //var node= document.createTextNode('<a href="">this is text</a>')
+
+            //텍스트 노드를 붙일 요소를 찾아오기
+            var target= document.getElementsByClassName('pp')[0]
+            //target.appendChild(node)
+
+            //text node를 간단하게 추가하는 방법
+            target.textContent += '<a href="">this is text</a>'
+        }
+
+        function bbb(){
+
+            // 요소 노드 추가
+            var node= document.createElement('a')
+
+            // 속성노드 추가
+            var attr= document.createAttribute('href')
+            attr.value='https://www.naver.com'
+            node.setAttributeNode(attr)
+
+            // 텍스트노드 추가
+            var text= document.createTextNode('네이버')
+            node.appendChild(text)
+
+            // a요소를 붙일 대상 참조하기
+            var target= document.getElementsByClassName('pp')[0]
+
+            // a요소 노드를 target에 붙이기
+            //target.appendChild(node)
+
+            // 제일 쉬운 문법
+            target.innerHTML += "<a href=''>네이버</a>"
+        }
+
+        function ccc(){
+            var target= document.getElementsByClassName('pp')[0]
+
+            //첫번째 자식노드를 제거하기
+            target.removeChild( target.firstChild )
+        }
+    </script>
+
+    <!-- [실습 #2] 기본적인 "id"를 이용하여 요소를 제어하는 방법과 DOM구조를 이용한 요소접근 방법으로 제어하기를 비교해보기 -->
+    <hr>
+
+    <!-- 1) id를 이용한 요소 제어 -->
+    <img src="../Day05/images/computer.png" alt="com" width="120" height="100" id="aa">
+    <button onclick="clickBtn()">이미지 변경</button>
+
+    <script>
+        function clickBtn(){
+            document.getElementById('aa').src= "../Day05/images/notebook.png"
+        }
+    </script>
+
+    <hr>
+
+    <!-- 2) DOM요소제어를 통해 스타일 변경해보기 -->
+    <p>this is paragraph</p>
+    <input type="button" value="스타일 변경" onclick="clickBtn2(this)">
+
+    <script>
+        function clickBtn2(e){
+            //버튼의 바로 앞 형제 요소노드..라는 점을 이용하여 찾아오기
+            var p= e.previousElementSibling
+            p.style.color="red"
+            p.style.fontWeight= "bold" 
+        }
+    </script>
+
+    <hr>
+
+    <!-- [실습 #3] 스타일 여러개를 한반에 변경하는 기법 -->
+
+    <style>
+        .kk{
+            color: blue;
+            font-weight: bold;
+            font-style: italic;
+            border: 1px solid black;
+        }
+    </style>
+
+    <p id="p2" class="">안녕하세요.</p>
+    <button onclick="clickBtn3()">스타일 변경</button>
+
+    <script>
+
+        function clickBtn3(){
+            document.getElementById('p2').className= 'kk'
+        }
+
+    </script>
+
+
+
+
+
+
+    
+</body>
+</html>

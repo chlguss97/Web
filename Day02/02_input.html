@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>input element</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        
+        <!-- input 요소의 type 알아보기 -->
+        <input type="text" size="40"> <br>
+        <input type="password"> <br>
+
+        <hr>
+
+        <input type="radio" name="rg">aaa
+        <input type="radio" name="rg">bbb
+
+        <br>
+
+        <input type="radio" name="rg1" id="rb1" value="m" checked="checked">
+        <label for="rb1">Male</label>
+        <input type="radio" name="rg1" id="rb2" value="f">
+        <label for="rb2">FeMale</label>
+
+        <hr>
+
+        <label><input type="checkbox" name="fruits" value="apple">사과</label>
+        <label><input type="checkbox" name="fruits" value="orange" checked>오렌지</label>
+        <label><input type="checkbox" name="fruits" value="banana">바나나</label>
+
+        <hr>
+
+        <input type="submit" value="전송">
+        <input type="reset" value="취소">
+
+        <hr>
+
+        <input type="button" value="중복체크" onclick="alert('중복된 id입니다.')">
+        <button onclick="alert('버튼 눌렀음')">눌러주세요</button>
+
+        <!-- 이미지로 보여주는 서밋버튼 -->
+        <input type="image" src="./image/submit.png">
+
+        <hr>
+
+        <textarea name="" id="" cols="40" rows="5"></textarea>
+
+        <hr>
+
+        <select name="" id="">
+            <option value="a">aaa</option>
+            <option value="b" selected>bbb</option>
+            <option value="c">ccc</option>
+        </select>
+
+        <select name="" id="">
+            <optgroup label="중식">
+                <option value="1">짜장면</option>
+                <option value="2">짬뽕</option>
+                <option value="3">볶음밥</option>
+            </optgroup>
+            <optgroup label="한식">
+                <option value="4">비빕밥</option>
+                <option value="5">된장찌게</option>
+                <option value="6">제육볶음</option>
+            </optgroup>
+        </select>
+
+        <hr>
+
+        <fieldset>
+            <legend>필드셋의 제목</legend>
+            <label>이름: <input type="text" name="name"></label>
+            <label>주소: <input type="text" name="address"></label>
+        </fieldset>
+
+
+
+    </body>
+</html>

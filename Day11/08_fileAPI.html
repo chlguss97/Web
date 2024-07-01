@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file API</title>
+</head>
+<body>
+    
+    <input type="file" id="in1">
+    <button onclick="aaa()">파일 읽기</button>
+    <textarea id="ta" rows="10" cols="40"></textarea>
+    <script>
+        function aaa(){
+            //선택한 파일 정보 얻기
+            //var a= document.getElementById('in1').value
+            //alert(a)
+
+            var files= document.getElementById('in1').files //파일 배열이 리턴됨.
+            //파일정보 확인
+            alert( files[0].name +"\n" + files[0].type +"\n" + files[0].size )
+
+            //파일 리더 객체 생성
+            var fr= new FileReader()
+
+            //파일리더가 읽은 결과를 받는 콜백메소드 등록
+            fr.onload= function(){
+                document.getElementById('ta').innerHTML= fr.result                
+            }
+
+
+            //파일리더에게 텍스트로 읽어달라고 요청 [econding 방식 옵션추가 가능]
+            fr.readAsText( files[0] , "utf-8" )
+
+            
+        }
+    </script>
+
+    <hr>
+
+    <h3>사용자 선택 이미지 프리뷰</h3>
+    <input type="file" id="in2">
+    <button onclick="bbb()">이미지 읽기</button>
+    <hr>
+    <img src="" alt="" id="kk" style="border: 4px solid black; max-width: 500px; max-height: 500px;">
+    <script>
+
+        function bbb(){
+            //선택한 파일정보객체 얻기
+            var file= document.getElementById('in2').files[0]
+
+            var fr= new FileReader()
+            fr.onload= function(){
+                document.getElementById('kk').src= fr.result
+            }
+
+            fr.readAsDataURL( file )
+
+
+        }
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워커(스레드)</title>
+
+    <script>
+        function aaa(){
+            var a=0
+            while(true){
+                a++;
+                document.getElementById('hh').innerHTML= a
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <button onclick="aaa()">무한 반복!</button> 
+    <hr>
+    <h3 id="hh">결과 : </h3>
+    <hr>
+    <button onclick="alert('clicked button')">버튼</button>
+    <hr>
+    <button onclick="bbb()">start worker</button>
+    <button onclick="ccc()">stop worker</button>
+
+    <script>
+        var w= undefined
+
+        function bbb(){
+            if(w==undefined){
+                //비동기로 별도의 동작을 수행하는 스레드 객체를 생성
+                w= new Worker('./worker.js') //워커는 생성하면 자동 실행!
+
+                //worker가 보낸 메세지를 받았을때 발동하는 콜백메소드를 등록
+                w.onmessage= function( messageEvent ){
+                    document.getElementById('hh').innerHTML= messageEvent.data
+                }
+                
+
+            }else{
+                document.getElementById('hh').innerHTML= "이미 워커가 존재함"
+            }            
+
+        }
+
+
+        function ccc(){
+            if(w != undefined){
+                w.terminate()
+                w= undefined
+            }
+            
+        }
+
+    </script>
+    
+</body>
+</html>

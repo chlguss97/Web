@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* *{border: 1px dotted red;} */
+
+        a{padding: 10px; margin: 10px;}
+        em{padding: 10px;}
+        strong{padding: 10px;}
+
+        img{padding: 5px;}
+        input{margin: 10px;}
+    </style>
+</head>
+<body>
+
+    <!-- 부모 box의 height는 언제나 자식의 box높이를 감싸지 않을 수도 있음. -->
+
+    <!-- 블럭요소 안에 블럭요소가 있다면 무조건 자식요소의 높이를 감쌈 -->
+    <div style="border: 1px solid blue;">
+        <p>Hello</p>
+    </div>
+
+    <hr>
+
+    <!-- 블럭요소안에 인라인요소가 있다면 자식요소의 box높이를 감싸지 않을 수도 있음. -->
+    <div style="background-color: khaki; border: 1px solid blue;">
+        <a href="">nice</a>
+        <em>good</em>
+        <strong>html</strong>
+
+        <!-- 인라인블럭요소는 부모박스에 영향을 줌 -->
+        <img src="./imgs_company/logo.png" alt="">
+        <input type="text">
+    </div>
+
+    <hr>
+
+    <div style="border: 1px solid black; padding: 10px;">
+        <input type="text" placeholder="이메일" style="outline: none; width: 100%; padding: .5rem 1rem; margin: 0; box-sizing: border-box;">
+    </div>
+    
+</body>
+</html>

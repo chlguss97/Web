@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>선택자</title>
+        <meta charset="utf-8">   
+        
+        <!-- 내부 스타일 시트 -->
+        <style>
+            /* <style>영역 안에서는 CSS의 문법체계를 따름 */
+            
+            /* 기본문법 -  선택자{속성:값} */
+
+            /* 선택자의 종류 */
+            /* 1. 타입(요소종류) 선택자 */
+            h2{color: red;}
+            p{color: blue; font-size: 18px;}
+
+            /* 2. 전체 선택자 */
+            *{font-style: italic; color: yellow;} /*같은 스타일을 적용할때는 개별선택자가 우선적용됨*/
+
+            /* 3. 아이디 선택자 */
+            #p1{color: green;}
+
+            /* 4. 클래스 선택자 */
+            .aa{color: violet;} /* 타입선택자보다 우선적용됨*/
+            
+            /* p요소중에서 class가 aa인 요소를 선택하기 */
+            p.aa{background-color: yellow;}
+
+            /* 5. 선택자 그룹 */
+            li, a, #p1{color: gray;}
+
+            /* 6. 자식, 자손 선택자 */
+            #ss>p{color: black;}
+            #ss p{color: lime;}
+
+            #kk ul.gg>li{background-color: aqua;}
+
+            /* 7. 속성 선택자 */
+            p[class]{font-size: 30px;}
+            a[href="https://www.naver.com"]{font-weight: bold;}
+
+            /* 8. 의사(pseudo-class) 선택자 */
+            a:link{color: blue;}
+            a:visited{color: brown;}
+            a:hover{color: green;}
+            a:active{color: red;}
+
+            #kk ul li:first-child{color: red;}
+            #kk ul li:last-child{color: blue;}
+            #kk ul li:nth-child(2){color: green;}
+
+            table tr:nth-child(2n+1){background-color: aqua;}
+
+
+        </style>
+        
+    </head>
+    <body>
+        
+        <h2 class="aa">CSS Selector Test</h2>
+
+        <p id="p1">Hello world</p>
+        <p class="aa">안녕하세요</p>
+
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <a href="https://www.naver.com">naver</a>
+        <a href="https://www.google.com">google</a>
+
+        <div id="ss">
+            <h4>Region</h4>
+
+            <p>Hello world</p>
+            <div>
+                <p>apple</p>
+                <p>banana</p>
+                <p>orange</p>
+            </div>
+        </div>
+
+        <div id="kk">
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+            <ul class="gg">
+                <li>uuu</li>
+                <li>ppp</li>
+                <li>www</li>
+            </ul>
+        </div>
+
+        <table border="1">
+            <tr>
+                <td>aaa</td>
+                <td>bbb</td>
+                <td>ccc</td>
+                <td>ddd</td>
+            </tr>
+            <tr>
+                <td>aaa</td>
+                <td>bbb</td>
+                <td>ccc</td>
+                <td>ddd</td>
+            </tr>
+            <tr>
+                <td>aaa</td>
+                <td>bbb</td>
+                <td>ccc</td>
+                <td>ddd</td>
+            </tr>
+            <tr>
+                <td>aaa</td>
+                <td>bbb</td>
+                <td>ccc</td>
+                <td>ddd</td>
+            </tr>
+        </table>
+
+
+
+    </body>
+</html>

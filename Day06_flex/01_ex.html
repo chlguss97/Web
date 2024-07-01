@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>flex style</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+        <!-- 내부스타일 시트 적용 -->
+        <style>
+            #container{
+                display: flex;
+                /* 자식요소가 마치 inline-block요소처럼 width가 wrap으로 되고 옆으로 배치됨 */
+
+                /* 1) 자식요소들이 많아서 부모의 영역을 벗어나려 할때 자동으로 줄바꿈을 해주는 속성 */
+                flex-wrap: wrap;
+                flex-wrap: wrap-reverse;
+                flex-wrap: nowrap; /*기본값*/
+
+                flex-wrap: wrap;
+
+                /* 2) 배치 방향 속성 */
+                flex-direction: column; /*세로방향*/
+                flex-direction: column-reverse;
+                height: 500px;
+
+                flex-direction: row; /*가로방향 - 기본값*/
+                flex-direction: row-reverse;
+
+                border: 1px dotted red;
+
+                /* 3) wrap, direction속성(순서 상관없음)을 축약형으로 줄여서 쓰는 속성 */
+                flex-flow: wrap column;
+                flex-flow: row nowrap; /*기본 상태값*/
+
+
+                /* 4) 자식요소들의 정렬에 사용하는 속성 2개 */
+
+                /* 1. justify-content : direction의 방향과 같은 축의 정렬 */
+                /* 1.1 수평배치(row) 일때는 수평 정렬 */
+                flex-direction: row;
+                justify-content: center;
+                justify-content: flex-end;
+                justify-content: flex-start; /*기본값*/
+                justify-content: space-between;
+                justify-content: space-around;
+                justify-content: space-evenly;
+
+                /* 1.2 수직배치(column) 일때는 수직 정렬 */
+                flex-direction: column;
+                justify-content: flex-start;
+                justify-content: center;
+                justify-content: flex-end;
+                justify-content: space-between;
+                justify-content: space-around;
+                justify-content: space-evenly;
+
+                /* 2. align-items : direction의 방향과 교차축의 정렬 */
+                /* 2.1 수평배치(row)일때는 수직 정렬 */
+                flex-direction: row;
+                align-items: flex-start;
+                align-items: center;
+                align-items: flex-end;
+                align-items: stretch; /*기본값*/
+                align-items: baseline;
+
+                /* 2.2 수직배치(column)일때는 수평 정렬 */
+                flex-direction: column;
+                align-items: flex-start;
+                align-items: center;
+                align-items: flex-end;
+                align-items: stretch; /*자식요소의 width값을 지정했다면 그값이 우선적용됨*/
+                align-items: space-between;
+
+            }
+
+            #container>div{
+                background-color: aqua;
+                margin: 10px;
+                padding: 20px;
+
+                width: 100px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        
+        <!-- flex 스타일 : 자식요소들의 배치[layout]을 유연하게 하기 위한 스타일 -->
+        <!-- flex 스타일을 부모요소에 display 속성으로 지정함. 자식들의 배치방식을 부모가 결정하게 됨 -->
+        <!-- 마치 안드로이드의 LinearLayout과 비슷함 -->
+        <div id="container">
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+
+            <!-- <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div> -->
+        </div>
+
+        <hr>
+
+        <!-- 자식요소들을 부모의 정가운데 배치하기.. -->
+        <div id="aa">
+            <h2>Hello</h2>
+            <p>This is flex layout</p>
+        </div>
+
+        <style>
+            #aa{
+                height: 200px;
+                background-color: blueviolet;
+                color: white;
+
+                display: flex;
+                flex-direction: column;
+
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+
+        <hr>
+
+        <!-- 자식요소들에 직접 설정하는 flex 스타일들 -->
+        <div class="container2">
+            <div id="ch1">aaa</div>
+            <div id="ch2">bbb</div>
+            <div id="ch3">ccc</div>
+        </div>
+
+        <style>
+
+            .container2{
+                display: flex;
+            }
+
+            .container2>div{
+                background-color: aqua;
+                padding: 20px;
+                margin: 10px;
+            }
+
+            /* 자식요소들만의 flex 속성들 */
+            /* 1. order : 배치 순서를 변경 */
+            #ch1{ order: 3;}
+            #ch2{ order: 1;}
+            #ch3{ order: 2;}
+
+            /* 2. flex-grow : 너비를 상대적인 값의 비례로 지정 [ android의 weight과 비슷한 기능 ] */
+            #ch1{
+                order: 1;
+                flex-grow: 1;
+            }
+            #ch2{
+                order: 1;
+                flex-grow: 1;
+            }
+            #ch3{
+                order: 1;
+                flex-grow: 6;
+            }
+
+            /* 3. flex-shrink : 나머지 아이템과 비교하여 얼마나 너비를 줄일것이가를 지정하는 속성 */
+            /* 예제를 별도의 파일에서 실습해보기 */
+
+            /* 4. flex-basis : 요소들의 초기 길이를 지정함 - 화면이 작아지면 우선적으로 줄어듦 */
+            #ch1{
+                order: 1;
+                flex-grow: 0;
+            }
+
+            #ch2{
+                order: 1;
+                flex-grow: 0;
+                flex-basis: 200px;
+            }
+
+            #ch3{
+                order: 1;
+                flex-grow: 0;
+                flex-basis: 300px;
+            }
+
+            /* 5. flex ( -grow -shrink -basis의 축약형) */
+            #ch1{ flex: 0 0 0px; }
+            #ch2{ flex: 1 0 0px; }
+            #ch3{ flex: 1 0 0px; }
+
+            /* 축약형은 반드시 모두 써야 하지 않음. 필요한 것만 사용해도 됨. -grow만 적용한 것이 됨  */
+            #ch1{flex: 1;}
+            #ch2{flex: 3;}
+            #ch3{flex: 1;}
+
+            /* 6. 자식요소 스스로 정렬의 위치를 결정 */
+            .container2{
+                flex-direction: row;
+                height: 300px; 
+                border: 2px solid black;                      
+            }
+
+            .container2>div{
+                height: 100px;
+            }
+
+            #ch2{ align-self: center; }
+
+            #ch3{ align-self: flex-end;}
+
+
+
+
+        </style>
+
+
+
+    </body>
+</html>

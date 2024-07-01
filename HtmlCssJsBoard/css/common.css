@@ -1,0 +1,68 @@
+/* 전체 요소들의 기본 마진과 패딩 제거 */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* rem 단위의 기준이 될 글씨 사이즈를 지정 */
+html{
+    font-size: 10px;
+}
+
+/* 리스트의 블릿기호를 제거 */
+ul {
+    list-style: none;
+}
+
+/* anchor 요소의 언더라인 제거, 글씨색상 */
+a {
+    text-decoration: none;
+    color: inherit;  /*부모요소의 색상을 적용*/
+}
+
+/* 콘텐츠가 표시되는 영역 */
+.board_wrap{
+    width: 860px;
+    margin: 100px auto;
+    /* border: 1px dotted red; */
+}
+
+/* 1. 게시판의 제목 영역 */
+.board_title {
+    margin-bottom: 30px;
+}
+
+.board_title h2{
+    font-size: 3rem;
+}
+
+.board_title p{
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+
+/* 3. 버튼 영역 */
+.btn_wrap{
+    margin-top: 30px;
+    text-align: center;    
+}
+
+.btn_wrap a{
+    border: 1px solid black;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    width: 80px;
+    display: inline-block;
+
+    /* 버튼이 2개 일때 사이 간격을 벌리기 */
+    margin-left: 10px;
+}
+
+/* 단, 첫번째 앵커는 왼쪽 마진을 제거 */
+.btn_wrap a:first-child{
+    margin-left: 0;
+}

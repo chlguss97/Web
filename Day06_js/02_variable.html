@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript 변수</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width= device-width; initial-scale=1.0">
+
+        <!-- 내부 스크립트 작성 -->
+        <script>
+
+            // JS에서 자료형의 종류
+            // 1. 수치형 : number - 정수,실수    //주의!! Number와는 다른 자료형
+            // 2. 문자형 : string - 한문자, 문자열
+            // 3. 논리형 : boolean - true, false
+            // 4. 객체형 : object [ 내장, 함수, new키워드 ]
+            // 5. undefined : 값이 없는 변수의 자료형
+
+            // 변수 선언
+            var a
+            a=10
+            document.write(a)
+            document.write('<br>')
+
+            var b="aaa"
+            document.write(b)
+            document.write('<br>')
+
+            var c= true
+            document.write(c)
+            document.write('<br>')
+
+            var d= new Date()
+            document.write(d) //객체 참조변수를 출력하면 자동 그 객체의 .toString()메소드가 발동
+            document.write('<br>')
+
+            var e
+            document.write(e) //undefined 
+            document.write('<br>')
+
+            document.write('<hr>')
+
+            //자료형 확인해보기
+            document.write( typeof(a) +"<br>" )
+            document.write( typeof(b) +"<br>" )
+            document.write( typeof(c) +"<br>" )
+            document.write( typeof(d) +"<br>" )
+            document.write( typeof(e) +"<br>" )
+
+            // 아래는 당연히 문자형 자료형임
+            var f="1"
+            document.write( typeof(f) +"<br>")
+
+            document.write('<hr>')
+
+            // JS는 동적타입언어임. 자료형이 미리 결정되지 않고.. 값이 대입될때..마다 결정됨
+            var g=100
+            document.write(g)
+            document.write('<br>')
+
+            g="kim"
+            document.write(g)
+            document.write('<br>')
+
+            // 함수형언어의 특징도 있음. 즉, 함수를 변수가 저장할 수 있음.[코틀린에서 익명함수라고 불렀음]
+            var h= function(){
+                document.write('익명 함수...<br>')                
+            }
+
+            document.write(h)
+            document.write('<br>')
+
+            // 함수명으로 함수의 코드를 실행하도록 호출해야 하지만..익명함수여서 이름이 없기에..
+            // 이 함수를 저장하고 있는 변수의 이름으로 대신 기능 호출이 가능함.
+            h()
+
+            // string 형 변수는 객체참조변수가 맞음
+            var s="Hello"
+            document.write(s.length)
+            document.write("<br>")
+
+            document.write(s.charAt(1))
+            document.write("<br>")
+
+            document.write(s.replace("l","p") ) //자바와 다르게 한개만 변경됨
+            document.write("<br>")
+
+            document.write(s.toUpperCase())
+            document.write("<br>")
+            document.write(s) //원본은 불변
+            document.write("<br>")
+            document.write(s.toString())
+            document.write("<br>")
+
+            //객체 참조변수도 사용가능함
+            var person= {name:"sam", age:20}
+            document.write(person.name +" , " + person.age +"<br>")
+
+            document.write('<hr>')
+
+            // JS변수사용의 특이한 점 - 같은 변수명을 또 사용해도 에러 아님
+            var a=10
+            var a   //var키워드만 무시함
+
+            document.write("a: "+ a+"<br>")
+
+            // 수치형 값 중에 실수(소수점)에 대한 표기법
+            var b=3.14
+            document.write(b)
+            document.write('<br>')
+
+            var c= 123.5e3
+            document.write(c)
+            document.write('<br>')
+
+            var c= 123.5e-3
+            document.write(c)
+            document.write('<br>')           
+
+
+        </script>
+
+    </head>
+    <body>
+        
+    </body>
+</html>

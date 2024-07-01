@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>layout style</title>
+        <meta charset="utf-8">
+
+        <style>
+
+            /* display속성 */
+            #aa{ display: inline; }
+            #aa{ display: inline; width: 300px;}
+            #aa{ display: inline-block; width: 300px;}
+
+            img.bb{ display: block;}
+
+            .cc{ display: none;}
+
+        </style>
+
+    </head>
+    <body>
+
+        <!-- display 속성 연습용 -->
+        <p id="aa">Hello world</p>
+        <a href="">Naver</a>
+        <strong>Good morning.</strong>
+
+        <img src="./image/lion.png" alt="lion" class="bb">
+
+        <hr>
+
+        <ul>
+            <li>aaa</li>
+            <li class="cc">bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <hr>
+
+        <!-- 블럭요소와 인라인 요소를 같이 사용할 때 고려할 것들!!! -->
+
+        <!-- 블럭요소안에 인라인 요소 넣기... -->
+        <div style="background-color: tomato; border: soild; padding: 5px;">Nice <strong>aaaa</strong> world</div>
+
+        <!-- 블럭요소안에 다른 블럭요소 넣기 -->
+        <div style="background-color: teal; border: soild; padding: 5px;">Nice <p>aaaa</p> world</div>
+
+        <!-- p요소안에 또 p요소 넣기 -->
+        <p style="background-color: yellow; border: soild; padding: 5px;">Nice <p>aaaa</p> world</p>
+
+        <!-- h1요소 안에 또 h1요소 넣기 -->
+        <h1 style="background-color: yellowgreen; border: soild; padding: 5px;">Nice <h1>aaaa</h1> world</h1>
+
+        <!-- div안에 div는 중첩으로 잘 인식함 -->
+        <div style="background-color: aqua; border: soild; padding: 5px;">Nice <div>aaa</div> world</div>
+
+        <!-- 인라인요소안에 블럭요소는 넣으면...인라인요소의 감쌀 능력을 벗어남 -->
+        <span style="background-color: aquamarine; border: solid; padding: 5px;">Nice <p>aaa</p> world</span>
+
+
+        <hr>
+
+        <!-- position -->
+        <div class="ss">
+            <p id="p1">block #1</p>
+            <p id="p2">block #2</p>
+            <p id="p3">block #3</p>
+        </div>
+
+        <style>
+
+            /* absolute position을 사용하는 자식요소가 본인의 좌상단을 기준점으로 배치되도록 하려면.. static position이 아니어야함 */
+            div.ss{
+                position: relative;
+                background-color: black;
+            }
+
+
+            #p1{
+                background-color: aqua;
+                width: 200px;
+                height: 50px;
+            }
+
+            #p2{
+                background-color: yellow;
+                width: 200px;
+                height: 50px;
+
+                position: static; /* 원래 놓여질 위치에 놓는 설정값 */
+                position: relative; /* 기본적으로는 원래 놓여질 위치에 놓지만 left,top같은 위치 설정값이 적용됨 */
+                position: absolute; /* 문서의 좌상단을 기준으로 위치를 지정함. 즉, 원래놓여질 위치에서 열외됨. -- 단, 부모요소가 static position이 아니면.. 부모요소를 기준으로 위치를 정함*/
+                position: fixed; /*브라우저를 기준으로 위치를 지정함*/
+                
+
+                /* 위치 설정 속성 (postion:static 인 경우에는 이 속성은 무시됨) */
+                /* left: 50px;
+                top: 30px; */
+                right: 10px;
+                bottom: 10px;
+            }
+
+            #p3{
+                background-color: lightgreen;
+                width: 200px;
+                height: 50px;
+            }
+
+
+            
+
+        </style>
+
+        
+    </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>박스모델(요소크기 및 배경)</title>
+        <meta charset="utf-8">
+
+        <!-- 내부 스타일 시트 -->
+        <style>
+
+            .border{
+                border-style: solid;
+                border-top-style: dotted;
+
+                border-width: 3px;
+                border-bottom-width: 8px;
+
+                border-color: red;
+                border-right-color: blue;
+
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+                /* 경계선을 이미지로 지정 */
+                border: 30px solid transparent;
+
+                border-image: url('./image/border.png');
+                border-image-slice: 30 30; /*조각 하나의 크기 : 높이 너비*/
+                border-image-repeat: round;
+
+                /* 요소 크기 */
+                width: 70%;
+                height: 400px;
+                margin-left: 50px;
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            html, body{height: 100%;}
+
+            /* 인라인요소의 크기 설정 (인라인요소는 크기속성이 무시됨)*/
+            a{background-color: red; width: 200px;}
+            em{background-color: aqua; width: 200px;}
+
+            /* 인라인블럭요소의 크기 설정 */
+            img{width: 150px; border: 1px solid black;}
+            input{width: 100%; background-color: aqua;}
+
+            /* 마진에 대한 이해.. */
+            #p1{background-color: red; height: 50px; margin: 0px; margin-bottom: 10px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: 10px;}
+
+            #p1{background-color: red; height: 50px; margin: 0px;}
+            #p2{background-color: green; height: 50px; width: 50%; margin: 0px; margin-top: -20px;}
+
+            /* 배경 */
+            #bg{
+                background-color: green;
+                background-image: url('./image/image.png');
+                background-size: 200px 100px; /*너비 높이*/
+
+                background-repeat: repeat-x;
+                background-repeat: repeat-y;
+                background-repeat: no-repeat;
+
+                background-position: center;
+                background-position: right top;
+                background-position: top center;
+
+                margin: 20px;
+                padding: 30px;
+            }
+            
+
+        </style>
+
+    </head>
+    <body>
+        
+        <!-- 경계선 / 요소크기 / 중앙정렬 -->
+        <p class="border">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ipsa cupiditate maiores velit repudiandae, neque est non labore laborum consectetur ea aliquid eos similique aut necessitatibus asperiores possimus distinctio officia.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus facilis, sequi enim incidunt quo distinctio tempora natus soluta? Repellendus sint id doloribus quibusdam, atque vero quidem aspernatur ea labore doloremque.
+        </p>
+
+        <!-- 인라인요소는 width 와 height 속성이 적용되지 않음 -->
+        <a href="">naver</a>
+        <em>Hello world</em>
+
+        <!-- 인라인요소 중에서 크기조절이 가능한 요소들 : inline-block요소 -->
+        <img src="./image/audio.png" alt="audio이미지">
+        <input type="text">
+
+        <!-- 마진에 대한 이해 -->
+        <div>
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+        </div>
+
+        <!-- 배경-->
+        <p id="bg">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos non, repellat excepturi voluptatem temporibus error distinctio atque voluptatibus itaque dolorum deserunt quidem delectus illum? Facilis natus esse inventore veritatis neque.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda illo autem quo beatae error natus, cumque dolorem maiores provident eveniet laborum voluptas distinctio laboriosam voluptatum rem sed vitae ex quam?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet enim, tenetur debitis ipsam cum odit nulla deserunt aspernatur temporibus illo culpa delectus doloribus sequi reprehenderit ullam beatae dolore ex praesentium.
+        </p>
+
+        <!-- 배경 이미지가 붙어있을 위치를 지정 -->
+        <p class="ss">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque excepturi iusto, provident praesentium dolores ipsa dignissimos itaque? Ex, repellat nisi deleniti rerum, quis consequuntur libero error animi harum pariatur nam.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus ea maxime tempora commodi. Vero alias id ipsa hic assumenda ex, ad suscipit quidem, doloremque vel in tempora, sed asperiores ratione?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sequi sit itaque quam, architecto qui reprehenderit rerum repellat culpa, iste nostrum modi dolore molestias dolor aut officia praesentium beatae sapiente!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolorum, nihil amet et consequuntur asperiores, quaerat labore veritatis vero quo recusandae ipsam eum debitis, repellendus est maxime voluptate doloribus voluptas.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id harum est reprehenderit cumque totam impedit maiores tempora architecto dolorum voluptas, accusamus officiis ipsa excepturi consectetur neque, perferendis veritatis vitae perspiciatis?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui optio dignissimos modi perferendis atque, commodi nobis. A, delectus. Laborum voluptate nostrum saepe quia praesentium neque odit? Sit vel eaque necessitatibus.
+        </p>
+
+        <!-- 또 다른 내부스타일 시트가 있어도 적용됨 -->
+        <style>
+            .ss{
+
+                width: 60%;
+                height: 300px;
+                border: 2px solid blue;
+                overflow: scroll;
+                margin-left: auto; margin-right: auto;
+
+                background-image: url('./image/image.png');
+                background-size: 200px 100px;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                background-attachment: scroll; /*default : 요소에 붙어 있는 배경 느낌*/
+                background-attachment: local;
+                background-attachment: fixed; /*브라우저의 위치를 기준으로 붙음*/
+
+
+
+            }
+        </style>
+
+
+
+    </body>
+</html>

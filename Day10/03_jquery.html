@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Library</title>
+
+    <!-- JQuery Library : JavaScript 라이브러리 적용하기.. (외부스크립트 적용방식과 같음) www.jquery.com-->
+    <!-- 1. 다운로드 방식 -->
+    <!-- <script src="./jquery-3.7.1.min.js"></script> -->
+
+    <!-- 2. CDN [Content Delivery Network] 방식 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <script>
+
+        // jquery 사용해보기 - document onload이벤트 처리..
+        jQuery(document).ready(function(){
+            //alert('loaded!!')
+
+            // id가 b1인요소를 찾아서 클릭이벤트 처리 - CSS의 선택자 문법사용가능
+            jQuery("#b1").click(function(){ alert('clicked button') })
+
+            // id가 in1인요소를 찾아서 포커스 이벤트 처리 [ jQuery --> $ 로 축약]
+            $('#in1').on('focus', function(){
+                //이벤트를 발생한 요소객체의 배경을 변경
+                $(this).css('background-color','yellow')
+            })
+
+            $('#in1').bind('blur', function(){
+                $(this).css('background-color', '')
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+
+    <!-- 클릭이벤트 처리 -->
+    <button id="b1">버튼</button>
+
+    <!-- 포커스 이벤트 -->
+    <label for="in1">name : </label>
+    <input type="text" name="user_name" id="in1">
+
+    <hr>
+
+    <!-- DOM요소 제어하기 -->
+    <!-- html(), text() 읽기 -->
+    <p id="p1">이 요소의 text에는 <strong>스트롱 요소</strong>가 안에 존재합니다.</p>
+    <button id="b2">text() 읽기</button>
+    <button id="b3">html() 읽기</button>
+
+    <script>
+        $('#b2').click(function(){
+            alert(  $('#p1').text()  )
+        })
+        $('#b3').click(function(){
+            alert(  $('#p1').html()  )
+        })
+    </script>
+
+    <p id="p2">여기에 Text 콘텐츠 작성하기..</p>
+    <button id="b4">text() 쓰기</button>
+    <button id="b5">html() 쓰기</button>
+    <script>
+        $('#b4').click(function(){
+            $('#p2').text('텍스트 추가 <a href="">앵커 요소</a> 를 하면??')
+        })
+        $('#b5').click(function(){
+            $('#p2').html('텍스트 추가 <a href="">앵커 요소</a> 를 하면??')
+        })
+    </script>
+
+    <hr>
+
+    <!-- input요소의 값 -->
+    <input type="text" id="in2" value="Hello world">
+    <button id="b6">입력필드 값 읽기</button>
+    <button id="b7">입력필드 값 쓰기</button>
+
+    <script>
+
+        $('#b6').click(function(){
+            alert( $('#in2').val()  )
+        })
+
+        $('#b7').click(function(){
+            $('#in2').val('nice to meet you')
+        })
+
+    </script>
+
+    <hr>
+
+    <!-- 스타일 읽고 쓰기 -->
+    <ul class="list">
+        <li style="color: red">aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+        <li id="last">ddd</li>
+    </ul>
+    <button>리스트 스타일 이동</button>
+
+    <script>
+
+        //현재 스타일이 적용되어 있는 요소부터 찾기
+        $curr = $('ul.list>li:first')
+
+        $('ul.list').next().click(function(){
+            
+            var color = $curr.css('color')
+            $curr.css('color','')
+
+            if($curr.attr('id') == 'last') $curr= $('ul.list>li:first')
+            else $curr= $curr.next()
+
+            $curr.css('color', color)
+        })
+
+    </script>
+
+    <!-- 요소 자식추가 append(), prepend(), 예) append('<a href="">aaa</a>') -->
+    <!-- 요소 형제추가 after(), before() -->
+    <!-- 요소 삭제 remove() -->
+    <!-- 요소 자식비우기 empty() -->
+
+    <hr>
+
+    <!-- foreach -->
+    <div class="fruits">
+        <label><input type="checkbox" name="fruits" id="cb1" value="apple" checked="checked">사과</label>
+        <label><input type="checkbox" name="fruits" id="cb2" value="banana">바나나</label>
+        <label><input type="checkbox" name="fruits" id="cb3" value="orange" checked>오렌지</label>
+
+        <button id="b8">선택완료</button>
+    </div>
+
+    <script>
+
+        $('#b8').click(function(){
+
+            // 체크된 체크박스 요소들을 참조하기
+            var es= $('div.fruits input[type=checkbox]:checked')
+
+            var s=""
+            // es.forEach(function( e, index, array){ //요소, 인덱스, 배열
+            //     s= s + e.value +", "
+            // })
+
+            es.each(function(){
+                s = s + $(this).val() +", "
+            })
+
+            alert(s)           
+
+        })
+
+    </script>
+
+    
+    
+</body>
+</html>

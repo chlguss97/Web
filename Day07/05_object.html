@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object</title>
+
+    <script>
+
+        // JS에서의 객체 2가지 종류 [ 객체 : 변수 + 기능메소드 ]
+        // 1. 내장객체 : document, window, navigation...등... Date(), Array(), String(), Number()..
+        // 2. 사용자정의 객체 .. 개발자가 설계하여 사용하는 객체
+
+        // [사용자 정의 객체부터 실습]
+        // JS에서 객체를 만드는 문법은 2가지 ( ECMAscript 6버전에 새로 class 키워드가 등장함. .이제는 3가지..)
+        
+        //1] 리터럴 객체 - 객체를 생성하면서 설계하는 방식
+        var person= {
+            // 멤버변수 - property(속성)
+            name:"sam",
+            age:20,
+            
+            // 멤버함수 - method
+            show: function(){
+                //document.write('show....<br>')
+                //document.write('show: ' + name +" , " + age +"<br>") //name, age라는 변수를 인식하지 못함???
+                //JS 객체안에서 본인의 멤버를 접근할때는 반드시 this. 키워드가 필수로 요구됨.
+                document.write('show : ' + this.name +" , " + this.age +"<br>")
+            } 
+        }
+
+        //객체의 멤버변수 사용
+        document.write(person.name +"<br>")
+        document.write(person.age +"<br>")
+
+        //객체의 기능 메소드를 사용- 호출
+        person.show()
+
+        // 새로운 리터럴 객체를 만들려면... 처음부터 다시 모두 작성해야 함
+        var person2= {
+            name:"robin",
+            age:25,
+
+            show:function(){
+                document.write("show : " + this.name +" , " + this.age +"<br>")
+            },
+
+            //파라미터 전달받는 메소드
+            add: function(a,b){
+                var c= a+b
+                document.write(`add: ${c} <br>`) //문자열 탬플릿 빽틱기호..
+
+            }
+        }
+
+        person2.show()
+        person2.add(5,30)
+
+        person2.show(5,30) //그냥 버려지는 인자값
+        person2.add()
+
+        //person.add(5,3) //없는 메소드를 호출하면 에러..
+
+        //JS문법은 매우 유연함. 그래서 객체를 생성한 후에도 멤버를 추가할 수 있음.
+        person.tel= "01012345678" 
+        document.write("이름: " + person.name +"<br>")
+        document.write("나이: " + person.age +"<br>")
+        document.write("전화번호: " + person.tel +"<br>")
+
+        //멤버 함수(메소드)도 추가할 수 있음
+        person.output= function(){
+            document.write("output : " + this.name +" , " + this.age +" - " + this.tel +"<br>")
+        }
+
+        person.output()
+
+        //특이한 점..
+        //document.write("number : " + num +"<br>") //에거
+        document.write("주소: " + person.address +"<br>" ) //undefined
+
+        document.write("<hr>")        
+
+        //2] 생성자 함수 - Java의 클래스설계하는 것과 유사하게 사용. 즉, new 키워드로 객체를 생성하는 방식
+        function Student(){
+            //멤버변수 - this.키워드와 함께 사용
+            this.name= "aaa"
+            this.age= 20
+            this.major= "android"
+
+            //멤버함수 
+            this.show= function(){
+                document.write(`student show : ${this.name}, ${this.age}, ${this.major}<br>`)
+            }
+
+            //멤버변수에 값을 대입해주는 기능메소드...
+            this.setMembers= function(name, age, major){
+                this.name= name
+                this.age= age
+                this.major= major
+            }
+        }
+
+        //객체 생성과 참조변수 대입
+        var stu= new Student()
+        stu.show()
+
+        var stu2= new Student()
+        stu2.name="bbb"
+        stu2.age=25
+        stu2.major='web'
+        stu2.show()
+
+        var stu3= new Student()
+        stu3.setMembers("ccc",30,"ios")
+        stu3.show()
+
+        // 객체를 생성하면서 값 전달하기ㅣ..
+        function Stu(name, age, major){
+            this.name= name    //멤버변수
+            this.age= age
+            this.major= major
+
+            var address='seoul' //지역변수
+            nation="korea"      //전역변수
+
+            this.show= function(){
+                document.write("Stu: " + this.name+","+this.age+","+this.major+"<br>")
+            }
+        }
+
+        var s= new Stu('ddd', 40, 'react')
+        s.show()
+
+        var s2= new Stu()
+        s2.show()
+
+        document.write("주소:"+s2.address +"<br>")
+        document.write("국적: "+ s2.nation +"<br>")
+        document.write("국적: "+ nation +"<br>")
+
+        //////// 추가적인 내용들 ///////
+        // in 키워드 연산자
+        document.write( 'name' in s2 ) // s2객체안에 'name'이라는 속성(멤버변수)가 있으면 true
+        document.write("<br>")
+        document.write( 'address' in s2)
+
+        // 객체안에 다른 객체가 있을 수 있음 [중첩]
+        document.write('<hr>')
+        var flight= {
+            airline:'대한항공',
+            number:777,
+            arrival:{
+                nation:'japan',
+                city:'tokyo'
+            }
+        }
+
+        document.write(flight.airline+"<br>")
+        document.write(flight.arrival.nation+"<br>")
+        document.write(flight.arrival['city']+"<br>")
+
+        // Object.create() 기능 메소드 소개... : 객체의 clone기능
+
+        var p1={
+            name:"sam",
+            age:20,
+            show:function(){
+                document.write(this.name+" : " +this.age +"<br>")
+            }
+        }
+
+        var p2= p1  //객체의 공유...
+        p2.name= "hong"
+        p1.show()
+
+        //객체의 복제... clone 만들기
+        var p3= Object.create(p1)
+
+        p1.show()
+        p3.show()
+
+        p3.name="kim"
+
+        p1.show()
+        p3.show()
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

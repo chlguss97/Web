@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS array</title>
+
+    <script>
+
+        // JS에서 배열을 만드는 2가지 방법
+        // 1. 리터럴 배열
+        var aaa= [10,20,30]
+        document.write(aaa[0] +"<br>")
+        document.write(aaa[1] +"<br>")
+        document.write(aaa[2] +"<br>")
+
+        document.write("<hr>")
+
+        // JS는 동적타입언어임. 그래서 배열요소들의 자료형이 달라도 됨
+        var bbb= [10, "aaa", true]
+        document.write(bbb[0] +"<br>")
+        document.write(bbb[1] +"<br>")
+        document.write(bbb[2] +"<br>")
+
+        // 배열의 인덱스번호가 틀려도 에러나지 않음
+        document.write(bbb[3] +"<br>") //undefined
+
+        document.write("<hr>")
+
+        // 배열의 요소 개수 변경이 가능함.. 즉,  List처럼.. 요소추가가 가능함
+        document.write("배열의 요소 개수 : " + bbb.length +"<br>")
+
+        bbb[5]= 100 //5번방에 100을 넣었기에 3,4번 요소는 자동으로 생김.
+        document.write("배열의 요소 개수 : " + bbb.length +"<br>")
+        document.write(bbb[0]+'<br>')
+        document.write(bbb[1]+'<br>')
+        document.write(bbb[2]+'<br>')
+        document.write(bbb[3]+'<br>')
+        document.write(bbb[4]+'<br>')
+        document.write(bbb[5]+'<br>')
+
+        // 배열 참조변수를 출력하면? 자동 .toString()...되어.. 요소값이 , 구분자로 나열됨
+        document.write(bbb +"<br>")
+
+        document.write("<hr>")
+
+        // 2. Array 객체로 배열 생성
+        var ccc= new Array(10, "sam", 3.14)
+        for(var i=0; i<ccc.length; i++){
+            document.write( ccc[i] + "<br>" )
+        }
+        document.write("<hr>")
+
+        // for each 문법
+        for( var index in ccc ){  //요소값이 아니라 인덱스번호를 요소개수만큼 반복하여 얻어옴
+            document.write( ccc[index] +"<br>")
+        }
+
+        document.write("<hr>")
+
+        // 배열객체를 먼저 만들고 나중에 요소를 추가해도 됨.
+        var ddd= new Array()
+        ddd[0]= "apple"
+        ddd[1]= 20
+        ddd[2]= new Date()
+
+        for(var i=0; i<ddd.length; i++){
+            document.write(ddd[i] +"<br>")
+        }
+
+        document.write("<hr>")
+
+        // 배열요소의 구분을 index번호 대신에 '식별자 key'를 사용하는 배열 - 연관배열 이라고 부름 [ android Map collection 역할 ]
+        var eee= new Array()
+        eee['name']= "sam"
+        eee['age']= 20
+        eee['address']= 'seoul'
+
+        document.write( eee['name'] +"<br>")
+        document.write( eee['age'] +"<br>")
+        document.write( eee['address'] +"<br>")
+
+        // 연관배열의 .toString() 은?? .. 안나옴..
+        document.write( eee )
+
+        document.write("<hr>")
+
+        // 리터럴 배열도 빈 배열로 만들 수 있음
+        var fff= []
+        fff['aa']= 10
+        fff['bb']= 20
+
+        document.write("<hr>")
+
+        // 연관배열을 배열객체를 생성하면서 만들기
+        var ggg= {'aa':10, 'bb':20}  //JS의 객체를 생성하는 문법을 이용
+        document.write( ggg['aa'] +"<br>" )
+        document.write( ggg['bb'] +"<br>" )
+
+        // 정확하게 표현하면.. {}는 배열문법이 아님.. JS의 객체문법임. 단지 []접근을 허용하는 것임
+        document.write( ggg.aa +"<br>" ) //객체의 멤버접근 연산자 . 으로도 사용가능함
+        document.write( ggg.bb +"<br>" )
+
+        // 이 연관배열을 자주 사용하는 사례.... form요소와 input요소들의 제어에 활용        
+    </script>
+
+</head>
+<body>
+
+    <hr>
+
+    <!-- form요소와 input요소들을 연관배열로 접근하는 기법 소개 -->
+    <form action="./login.php" method="get" name="loginForm">
+        <input type="text" name="user_id">
+        <input type="text" name="user_pw">
+        <input type="button" value="유효성 검사" onclick="check()">
+        <br>
+
+        <input type="submit">
+    </form>
+
+    <script>
+        function check(){
+            // document는 form요소와 input요소들을 참조하는 변수를 이미 멤버로 보유하고 있음.
+            // document.forms[0][0].value= 'abcd' 
+            // // index번호로 input요소를 구변하면 혼동됨. 그래서 input요소의 name속성값이 연관배열의 키 값으로 사용됨
+            // document.forms[0]['user_id'].value= 'aaaa'
+            // // form요소도 name속성값으로 쉽게 구분하여 접근 가능
+            // document.forms['loginForm']['user_pw'].value= '1234'
+
+            // // 연관배열은 JS의 객체와 구조가 같기에 문법적으로 바꿔 사용하는 것이 가능함
+            // // 심지어.forms 라는 참조변수도 생략함
+            // document.loginForm.user_id.value= 'mrhi'
+            // document.loginForm.user_pw.value= '1111'
+
+            //유효성 검사 - 비밀번호가 4자리 이상만 허용
+            if( document.loginForm.user_pw.value.length < 4 ){
+                document.loginForm.user_pw.style.border="2px solid red"
+            }else{
+                document.loginForm.user_pw.style.border=""
+            }
+        }
+    </script>
+
+    <hr>
+
+    <!-- 2차원 배열 -->
+    <script>
+
+        //2차원배열은 1차원배열을 여러개 가진 배열임
+        var hhh= [ [10,20,30],["aa","bb"],[true, false, true, false] ]
+
+        document.write( hhh[0][0] +", " )
+        document.write( hhh[0][1] +", " )
+        document.write( hhh[0][2] +"<br>" )
+
+        document.write( hhh[1][0] +", " )
+        document.write( hhh[1][1] +"<br>" )
+
+        document.write( hhh[2][0] +", " )
+        document.write( hhh[2][1] +", " )
+        document.write( hhh[2][2] +", " )
+        document.write( hhh[2][3] +"<br>" )
+
+        var iii= []
+        var a1=[10,20]
+        var a2=[30,40,555]
+        var a3=[50,60,666666,777777]
+
+        iii[0]= a1
+        iii[1]= a2
+        iii[2]= a3
+
+        for(var i=0; i<iii.length; i++){
+            for(var k=0; k< iii[i].length; k++){
+                document.write( iii[i][k] +", ")
+            }
+            document.write("<br>")            
+        }
+
+
+    </script>
+
+
+    
+</body>
+</html>

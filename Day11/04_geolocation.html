@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation</title>
+</head>
+<body>
+
+    <button onclick="aaa()">my location</button>
+    <h3 id="hh">location</h3>
+
+    <script>
+        function aaa(){
+            window.navigator.geolocation.getCurrentPosition(function( position ){
+                var lat= position.coords.latitude
+                var lng= position.coords.longitude
+
+                document.querySelector('#hh').innerHTML= lat +" , " + lng
+            },function(error){
+                switch(error.code){
+                    case error.PERMISSION_DENIED:
+                        break
+                    case error.TIMEOUT:
+                        break
+                    case error.POSITION_UNAVAILABLE:
+                        break
+                }
+            })
+        }
+    </script>
+
+
+    <hr>
+
+    <button onclick="bbb()">위치 자동 업데이트 start</button>
+    <button onclick="ccc()">위치 자동 업데이트 stop</button>
+    <h3 id="kk">location</h3>
+
+    <script>
+
+        function bbb(){
+            id= navigator.geolocation.watchPosition(function(position){
+                var lat= position.coords.latitude
+                var lng= position.coords.longitude
+
+                document.getElementById('kk').innerHTML= lat +" - " + lng
+            })
+        }
+
+        function ccc(){
+            navigator.geolocation.clearWatch(id)
+        }
+
+    </script>
+
+    
+</body>
+</html>

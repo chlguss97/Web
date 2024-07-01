@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>css style</title>
+        <meta charset="utf-8">
+
+        <!-- 내부 스타일 시트 -->
+        <style>
+            /* 이 영역안에서는 CSS문법 체계를 따름  */
+            a:link{color: blue;}
+            a:visited{color: green;}
+            a:hover{color: red; font-size: 2rem;}
+            a:active{color: yellow;}
+
+            p:hover{background-color: green;}
+
+            img{background-color: yellow; width: 150px; border: 2px solid red;}
+            img:hover{background-color: gray; width: 300px;}
+
+
+            ul{ list-style-type: disc;}
+            ul{ list-style-type: circle;}
+            ul{ list-style-type: square; list-style-position: outside;}
+
+            ol{ list-style: lower-alpha;}
+            ol{ list-style: upper-alpha;}
+            ol{ list-style: lower-roman;}
+            ol{ list-style: upper-roman;}
+            ol{ list-style: lower-greek;}
+            ol{ list-style: decimal;}
+            ol{ list-style: decimal-leading-zero;}
+
+            ul{ list-style-image: url('./image/rabbit.png'); list-style-position: inside;}
+
+        </style>
+
+    </head>
+    <body>
+        
+        <a href="https://www.naver.com">naver</a>
+
+        <!-- <a>요소가 아닌것도 적용가능함 -->
+        <p>Hello world</p>
+        <img src="./image/pome.png" alt="pome">
+
+        <hr>
+
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+        </ul>
+
+        <ol>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+        </ol>
+
+    </body>
+</html>

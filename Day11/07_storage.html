@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web storage</title>
+</head>
+<body>
+
+    <h3 id="aa"></h3>
+    <hr>
+    <h3 id="bb"></h3>
+
+    <script>
+
+        // 웹 스토리지 - 안드로이드의 sharedpreference 와 비슷
+
+        // 웹 스토리지의 2가지 저장소
+        //1. localStorage : 브라우저가 닫혀도 데이터를 저장하고 있음.[단, 같은 도메인에서만 접근 가능]
+        if( !localStorage.count ){ // count라는 변수를 저장한 적이 없다면
+            localStorage.count=0
+        }
+
+        // 기존의 count변수값을 1증가
+        localStorage.count= parseInt(localStorage.count) + 1
+
+        document.getElementById('aa').innerHTML= localStorage.count +"번째 방문입니다."
+
+        //2. sessionStorage : 브라우저가 켜져있을 때까지만 저장하는 저장소
+        if(!sessionStorage.count) sessionStorage.count=0
+
+        sessionStorage.count= parseInt(sessionStorage.count) + 1
+        document.getElementById('bb').innerHTML= sessionStorage.count+"번째 방문입니다."
+
+        //sessionStorage.clear()
+        //sessionStorage.length //저장된 변수의 개수
+        sessionStorage.setItem('user_id','aaa')
+    </script>
+    
+</body>
+</html>

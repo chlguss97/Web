@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유효성 검사</title>
+</head>
+<body>
+
+    <!-- 사용자 입력에 대한 유효성 검사 [ 올바른 형식인지 검증 ex. 숫자로 시작, 문자4개이상..] -->
+    <!-- 유효성검사를 위한 문법 : 정규 표현식 (Regular Expression) -->
+
+    <input type="text" id="in1">
+    <button onclick="check()">check</button>
+    <h3 id="hh"></h3>
+
+    <script>
+
+        function check(){
+
+            // 검증용 정규표현식 - 연습
+            var regExp= /a/      //a가 포함되는 모든것은 OK
+            var regExp= /A/      //A가 포함되는 모든것은 OK
+            var regExp= /ab/     //ab가 포함되는 모든것은 OK
+            var regExp= /^a/     //시작이 무조건 a...
+            var regExp= /^ab/     //시작이 무조건 ab...
+            var regExp= /^[ab]/     //시작이 무조건 a이거나 b...
+            var regExp= /^[a-z]/     //시작이 무조건 a~z 사이 [영어소문자]...
+            var regExp= /^[a-zA-Z]/     //시작이 무조건 [영어문자]...
+            var regExp= /^[a-zA-Z0-9]/     //시작이 무조건 [영어문자 또는 숫자]...
+            var regExp= /^[a-z]{2}/     //시작이 무조건 a~z 사이 [영어소문자] 2개...
+            var regExp= /a$/     //끝이 무조건 a...
+            var regExp= /ab$/     //끝이 무조건 ab...
+            var regExp= /[ab]$/     //끝이 무조건 a 이거나 b...
+            var regExp= /^a$/     //오직 a 1개
+            var regExp= /^ab$/     //오직 ab 1개
+            var regExp= /^[ab]$/     //오직 a 나 b 중 1개
+            var regExp= /^[a-z]$/     //오직 a~z 중 1개 [영어 소문자 1개]
+            var regExp= /^[a-zA-Z]$/     //오직 영문자 1개
+            var regExp= /^[a-zA-Z0-9]$/     //오직 영문자 또는 숫자 1개
+            var regExp= /^[a-z]{2}$/     //오직 영어 소문자 2개
+            var regExp= /^[a-z]{2,4}$/     //오직 영어 소문자 2~4개
+            var regExp= /^[a-z]{4,}$/     //오직 영어 소문자 4개 이상
+            var regExp= /^\w{4,}$/     //문자,숫자 4개 이상
+            var regExp= /^[a-z]*$/     // 영어 소문자 0개 이상이면 OK .. 값이 없어도 OK
+            var regExp= /^[a-z]+$/     // 영어 소문자 1개 이상이면 OK 
+            var regExp= /^[a-z]?$/     // 영어 소문자 0개 또는 1개 OK .. 값이 없어도 OK
+            var regExp= /^[1-5]$/     // 숫자 1~5 중 1개
+            var regExp= /^\d$/     // 숫자 1개
+            var regExp= /^\d\d\d$/     // 숫자 3개
+            var regExp= /^\d{3,4}$/     // 숫자 3~4개
+            var regExp= /^ab[0-9]?cd$/
+
+            var regExp= /^\d\d\d\d-\d\d-\d\d$/     // 생년월일 형식 검사 ####-##-##
+            var regExp= /^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]+$/     // 이메일 형식 검사 ####@##.##
+
+            var regExp= /^http/   //시작이 http
+
+            //시작이 http://
+            var regExp= /^http:[/]{2}/ 
+            var regExp= /^http:\/\//
+            var regExp= /^\/$/  // 슬래시 1개
+
+
+            
+
+
+
+
+            // 검증대상 글씨 얻어오기
+            var s= document.getElementById('in1').value
+
+            // 검증 시작!!
+            if( s.match(regExp) ) document.getElementById('hh').innerHTML="OK"
+            else document.getElementById('hh').innerHTML="요구하는 형식이 아닙니다."
+
+        }
+
+    </script>
+
+
+
+    
+    
+</body>
+</html>

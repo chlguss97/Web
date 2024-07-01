@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>table element</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <table border="1">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>hello</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>Nice to meet  you</td>
+                <td>2024-04-22</td>
+            </tr>
+        </table>   
+        
+        <hr>
+        
+        <!-- 셀병합 해보기.. -->
+        <table border="1">
+            <tr>
+                <td rowspan="2">111</td>
+                <td colspan="3">222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>666666666666666</td>
+            </tr>
+
+            <!-- 테이블 제목은 위치와 상관없이 무조건 표의 상단에 표시됨 -->
+            <caption>테이블 제목</caption>
+        </table>
+
+        <hr>
+
+        <!-- 테이블 <td></td>안에 다른 요소(element) 넣기 -->
+        <table border="1" width="70%">
+            <tr>
+                <td width="30%">
+                    <a href="https://www.naver.com">NAVER</a>
+                </td>
+                <td>
+                    <ul>
+                        <li>aaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>테이블 안에 어떤 요소든 넣을 수 있음. 자동 줄 바꿈 됨</p>
+                    <p>asdfasdf asdfasdf asdfasdfasdfa sdfasdfas dfasdfasdfa</p>
+                </td>
+                <td>
+                    <img src="./seolak.jpg" alt="설악산" width="50%">
+                </td>
+            </tr>
+        </table>
+
+
+    </body>
+</html>

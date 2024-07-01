@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ex</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        
+        <!-- 리스트 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+        <dl>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data입니다.</dd>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data입니다.</dd>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data입니다.</dd>
+        </dl>
+
+        <hr>
+
+        <!-- 하이퍼 링크 a 요소 -->
+        <a href="https://www.naver.com">NAVER - 절대주소</a>
+        <a href="http://mrhi2024.dothome.co.kr/index.html">닷홈 - 절대주소</a>
+        <br>
+        <a href="./02_text.html" target="_blank">상대주소 - 같은 폴더안에 있는 다른 html문서</a>
+        <br>
+        <a href="#help">도움말 위치로...</a>
+        <hr>
+        <p id="help">도움말</p>
+
+        <!-- 여러줄로 링크를 만들때는 보통은 <br>보다는 단락을 구분함 -->
+        <p><a href="">aaa</a></p>
+        <p><a href="">bbb</a></p>
+
+        <!-- 리스트의 항목에도 a 요소를 혼합하여 사용 -->
+        <ul>
+            <li><a href="">111</a></li>
+            <li><a href="">222</a></li>
+            <li><a href="">333</a></li>
+        </ul>
+
+        <!-- href속성에 여러 형태의 링크가 가능함 -->
+
+        <!-- 이메일 링크 -->
+        <p><a href="mailto:96kite@hanmail.net">96kite@hanmail.net</a></p>
+
+        <!-- 이미지 링크 -->
+        <p><a href="http://mrhi2024.dothome.co.kr/imgs/newyork.jpg">이미지 링크</a></p>
+
+        <!-- 브라우저가 보여줄 수 없는 문서는 자동 다운로드 됨 -->
+        <p><a href="http://mrhi2024.dothome.co.kr/korean_food_photos.zip">압축파일 다운로드</a></p>
+
+        <hr>
+
+        <!-- 이미지 -->
+        <img src="./seolak.jpg" alt="설악산" width="150" height="200">
+        <img src="http://mrhi2024.dothome.co.kr/imgs/newyork.jpg" alt="뉴욕" width="30%">
+        <img src="./aaa.jpg" alt="대체 글씨">
+
+        <!-- 이미지 + anchor -->
+        <a href="./seolak.jpg"><img src="./seolak.jpg" alt="설악산" width="100"></a>
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag & drop</title>
+
+    <style>
+        #cart{
+            width: 400px; height: 150px; padding: 10px; border: 1px dotted red;
+        }
+    </style>
+
+    <script>
+
+        var id
+        var isOverTarget= false
+
+        function startDrag(){
+            id= window.event.target.id  
+        }
+
+        function endDrag(){
+            if(isOverTarget){
+                var e= document.getElementById(id)
+                document.getElementById('cart').appendChild(e)
+
+                isOverTarget=false
+            }           
+        }
+
+        function overDrag(){
+            isOverTarget= true
+            // 기본적으로 요소위에 다른 요소가 드롭되는 것을 막아놓았음.. 이를 방지하기
+            window.event.preventDefault()
+        }
+
+        function leaveDrag(){
+            isOverTarget=false             
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <div id="cart" ondragover="overDrag()" ondragleave="leaveDrag()"></div>
+
+    <img src="./image/computer.png" alt="computer" width="150" height="150" id="img01" ondragstart="startDrag()" ondragend="endDrag()">
+    <img src="./image/notebook.png" alt="notebook" width="150" height="150" id="img02" ondragstart="startDrag()" ondragend="endDrag()">
+    
+</body>
+</html>

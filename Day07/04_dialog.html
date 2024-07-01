@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 다이얼로그</title>
+</head>
+<body>
+
+    <script>
+        // JS 에서 제공하는 기본 다이얼로그(모달) 3종류
+        //1. alert()
+        // alert()
+        // alert('알림')
+
+        // 2. 사용자에게 확인/취소를 선택하게 하는 다이얼로그
+        // var answer= confirm("종료하시겠습니까?")
+        // document.write(answer+"<br>")
+
+        // 3. 사용자에게 데이터입력을 받을 수 있는 다이얼로그
+        var age= prompt('당신의 나이를 입력하세요.','0')
+        document.write("입력된 나이 : " + age +"<br>")
+        document.write( typeof(age) +"<br>")
+
+    </script>
+
+    <hr>
+
+    <button onclick="aaa()">click</button>
+
+    <script>
+        function aaa(){
+            // body요소 모두 그려진 후 다시 document.write()를 하면..화면 모두가 지워지고 다시 써짐
+            document.write('clicked button')
+        }
+    </script>
+    
+</body>
+</html>

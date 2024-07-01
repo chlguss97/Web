@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 처리</title>
+
+    <!-- JS에서 이벤트를 적용하는 방법은 3가지 -->
+    <!-- 1. HTML요소에 속성으로 콜백함수를 지정. <button onclick='aaa()'> -->
+    <!-- 2. 자바스크립트에서 요소를 찾아와서 이벤트콜백 속성을 지정하는 방식 -->
+    <!-- 3. 요소에 특정 이벤트리스너를 추가하는 메소드를 통해 처리하는 방식 -->
+
+    <!-- 내부 스트립트 -->
+    <script>
+
+        // body영역에 있는 h2요소를 찾아와서 글씨를 추가.
+        document.getElementById('aa').innerHTML="Hello" //적용안됨. why? head영역이 body보다 먼저 실행되어..아직.h2요소가 만들어지기 전..
+
+        // 그렇다고 <script>영역을 <body>쪽으로 내리는 것을 가독성이 떨어져서 추천하지 않음.
+        // 그래서 <body>영역의 로딩이 완료된 후 특정 작업이(함수 aaa) 실행되도록..해야 함.
+        // 요소가 load되었을때 자동으로 발생하는 이벤트인 onload를 body요소에 속성으로 지정    
+        function aaa(){
+            document.getElementById('aa').innerHTML= 'Hello'
+
+            // h2요소를 클릭하면 글씨를 변경하기 [이벤트 적용 2번방식]
+            document.getElementById('aa').onclick= function(){
+                document.getElementById('aa').innerHTML="Nice to meet you"                                
+            }
+
+            // h2요소를 더블클릭하면 보여주는 다이얼로그 보이기 [이벤트 적용 3번방식]
+            document.getElementById('aa').addEventListener('dblclick', function(){                
+                alert('double clicked hello')
+            })
+        }
+
+    </script>
+
+</head>
+<!-- 1) onload 이벤트 [이벤트 적용의 1번 방식 - html요소작성할때 이벤트 콜백속성 지정] -->
+<body onload="aaa()">
+
+    <!-- 이벤트 적용 실습 -->
+    <h2 id="aa"></h2>
+
+    <hr>
+
+    <!-- 이벤트 처리방식 3가지를 학습한 후.. -->
+
+    <!-- 이벤트의 종류를 알아보기 -->
+    <!-- input요소의 이벤트, 마우스 이벤트, 키보드 이벤트 -->
+
+    <!-- 1) input요소 이벤트 -->
+    <input type="text" id="in1" onfocus="bbb()">
+    <input type="text" id="in2" onblur="ccc()" onchange="ddd()">
+    <script>
+        function bbb(){
+            document.getElementById('in1').value= "aa"
+        }
+        function ccc(){
+            alert('blur')
+        }
+        function ddd(){
+            alert('change')
+        }
+    </script>
+
+    <hr>
+    <!-- 사용자가 값을 입력하고 필드를 벗어나면 자동으로 대문자로 변경해주는 입력필드 -->
+    <input type="text" id="in3" onchange="changeUppercase()">
+    <script>
+        function changeUppercase(){
+            var s= document.getElementById('in3').value
+            document.getElementById('in3').value= s.toUpperCase()
+        }
+    </script>
+
+    <hr>
+    <!-- 2) 마우스 이벤트 -->
+    <!-- 2.1) over, out, move -->
+    <div style="width: 200px; height: 100px; background-color: yellow;" onmouseover="over(this)" onmouseout="out(this)" onmousemove="move(this)"></div>
+    <script>
+        function over(e){
+            e.style.backgroundColor="lightgreen"
+            e.style.border="2px solid red"
+        }
+        function out(e){
+            e.style.backgroundColor= "yellow"
+            e.style.border= ""
+        }
+
+        var n=0
+        function move(e){
+            n++;
+            e.innerHTML= n
+        }
+    </script>
+
+    <hr>
+    <!-- 마우스 move 좌표!! -->
+    <div style="width: 300px; height: 150px; background-color: green;" id="kk"></div>
+    <script>
+        document.getElementById('kk').addEventListener('mousemove', function( e ){ //파라미터 e : 이벤트정보를 가지고 있는 객체
+            //이벤트 콜백 익명함수 안에서 this키워드 : 이벤트를 발생시킨 요소를 지칭함
+            this.innerHTML = "브라우저 문서기준 좌표 :" + e.clientX +" , " + e.clientY +"<br>"
+            this.innerHTML += "모니터 기준 좌표 :" + e.screenX +" , " + e.screenY +"<br>"
+            this.innerHTML += "영역 기준 좌표 :" + e.offsetX +" , " + e.offsetY +"<br>"
+        })
+    </script>
+
+    <hr>
+    <!-- 마우스 다운 & 업 -->
+    <button id="btn">button</button>
+    <script>
+        var btn= document.getElementById('btn')
+
+        btn.addEventListener('mousedown', function(){
+            btn.style.background= 'red'
+            btn.style.color='yellow'
+            btn.style.fontSize='2rem'
+        })
+
+        var up= function(){
+            btn.style.background= ''
+            btn.style.color=''
+            btn.style.fontSize='1rem'
+        }
+
+        btn.addEventListener('mouseup', up)
+
+    </script>
+
+    <hr>
+
+    <!-- 3) 키보드 이벤트 -->
+    <input type="text" onkeydown="zzz()">
+    <input type="text" onkeypress="ppp()">
+    <script>
+        function zzz(){ //키 다운 : 대소문자를 구분하지 않고 모두 대문자로만 인식함
+            //window객체의 멤버변수 중에 이벤트를 관리하는 객체가 있음. event
+            alert( window.event.keyCode +" : " + String.fromCharCode(event.keyCode) )
+        }
+        function ppp(){ //키 프레스 : 대소문자를 구별함
+            alert( event.keyCode +" : " + String.fromCharCode(event.keyCode))
+        }
+    </script>
+
+
+
+
+    
+</body>
+</html>

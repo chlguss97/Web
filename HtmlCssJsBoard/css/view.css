@@ -1,0 +1,48 @@
+/* 공통 스타일 적용 */
+@import url('./common.css');
+
+.board_view_wrap{
+    width: 100%;
+    border-top: 2px solid black;
+}
+
+.board_view_wrap .title{
+    padding: 2rem 1.5rem;
+    font-size: 2rem;
+    border-bottom: 1px dashed #dddddd;
+}
+
+.board_view_wrap .info{
+    padding: 1.5rem 0;
+    border-bottom: 1px solid gray;
+}
+
+.board_view_wrap .info dl{
+    display: inline-block;
+    padding: 0 2rem;
+
+    border-right: 1px solid #cccccc;
+}
+
+.board_view_wrap .info dl:last-child{
+    border-right: 0px;
+}
+
+.board_view_wrap .info dl dt, dd{
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.board_view_wrap .info dl dd{
+    margin-left: 1rem;
+    color: #888888;
+}
+
+.board_view_wrap .content{
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 160%;
+    border-bottom: 1px solid black;
+
+    min-height: 20rem;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>파일 전송</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        
+        <!-- 파일 1개를 선택하여 전송해보기 -->
+        <form action="./ccc.php" method="post" enctype="multipart/form-data">
+            <input type="file" accept="image/png" name="aaa">
+            <input type="submit">            
+        </form>
+
+        <hr>
+
+        <!-- 파일 여러개를 선택하여 전송해보기 -->
+        <form action="./ddd.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="bbb[]" multiple="multiple">
+            <input type="submit">
+        </form>
+
+
+    </body>
+</html>

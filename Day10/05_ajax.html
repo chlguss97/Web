@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+
+    <script>
+        // AJAX : 비동기 방식으로 서버와 데이터를 요청하여 응답받는 기법 -- 서버에서만 동작함
+        // form요소를 사용할때와 다르게 페이지가 변경되지 않음.
+
+        function aaa(){
+            //GET방식으로 서버 데이터 받기
+
+            //서버와 통신을 하기 위한 JavaScript의 내장 생성자 함수(class라고 생각하면 됨)
+            var xhr= new XMLHttpRequest()
+
+            //결과 응답을 받으면 자동으로 발동하는 콜백메소드를 등록 - send()호출하기 전에 등록해야만 함
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState==4 && xhr.status==200 ){ // 4:서버응답완료, 200:결과 OK
+                    document.getElementById('ta').innerHTML= xhr.responseText
+                }                
+            }
+
+            // xhr.open('GET','./sample.txt') 
+            //xhr.open('GET','./getTest.php?title=Hello&msg=nice to meet you', true) //세번째 파라미터 : 비동기여부 
+            xhr.open('GET','http://mrhi2024.dothome.co.kr/ajax/sample.txt') //url 전체 주소[절대주소]
+            //xhr.open('GET','http://toachwithfire3.dothome.co.kr/ajax/sample.txt') // cross origin error : JS는 같은 서버의 데이터만 ajax 할 수 있음.
+            xhr.send()            
+        }
+
+        function bbb(){
+            var xhr= new XMLHttpRequest()
+
+            xhr.onreadystatechange= function(){
+                if( xhr.readyState==4 && xhr.status==200 ){
+                    document.getElementById('ta').value= xhr.responseText
+                }
+            }
+
+            xhr.open('POST', './postTest.php')
+            //보낼 데이터를 key=value 형식으로 만들기 - 헤더정보도 명시적으로 써야 함
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+            xhr.send("user_id=sam&user_pw=1234")
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <p>
+        <button onclick="aaa()">GET</button>
+        <button onclick="bbb()">POST</button>
+    </p>
+    <hr>
+    <textarea id="ta"></textarea>
+    
+</body>
+</html>

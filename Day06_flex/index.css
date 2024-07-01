@@ -1,0 +1,79 @@
+*{
+    /* margin: 0px;
+    padding: 0px; */
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif; 
+    margin: 0px;   
+}
+
+header{
+    height: 10rem;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1abc9c;
+    color: white;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: #333333;
+}
+
+nav a{
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:hover{
+    background-color: #dddddd;
+    color: black;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.container .side{
+    flex: 3;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.container .main{
+    flex: 7; 
+    padding: 20px;
+    background-color: white;
+}
+
+.fakeimg{
+    background-color: #aaaaaa;
+    width: 100%;
+}
+
+footer{
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+}
+
+/* 반응형 웹.. 을 적용하기 위한 미디어쿼리 문법 적용 */
+
+@media (max-width: 500px){
+    .container, nav{
+        flex-direction: column;
+    }
+}
